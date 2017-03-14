@@ -1,0 +1,16 @@
+spring:
+  profiles:
+    active: dev
+
+spring:
+  profiles: dev
+server:
+  context-path: /paper
+
+druid:
+  datasource:
+    url: jdbc:mysql://localhost:3306/choosepaper?characterEncoding=utf8
+    username: cbuser
+    password: cbpass
+mybatis:
+  config: classpath:mybatis-config.xml
