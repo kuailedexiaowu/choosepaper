@@ -41,10 +41,10 @@ public class MybatisConfiguration {
          */
         sqlSessionFactoryBean.setConfigLocation(this.resourceLoader.getResource(this.mybatisProperties.getConfig()));
 
-        if (pageHelper != null) {//添加分页插件
+        /*if (pageHelper != null) {//添加分页插件
             Interceptor[] interceptors = new Interceptor[]{pageHelper};
             sqlSessionFactoryBean.setPlugins(interceptors);
-        }
+        }*/
 
         SqlSessionFactory sqlSessionFactory=null;
         try{
