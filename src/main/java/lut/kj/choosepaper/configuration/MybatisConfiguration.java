@@ -1,4 +1,4 @@
-package lut.kj.paper.configuration;
+package lut.kj.choosepaper.configuration;
 
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
@@ -19,7 +19,7 @@ import javax.sql.DataSource;
  */
 @Configuration
 @EnableConfigurationProperties(MybatisProperties.class)
-@MapperScan(basePackages={"lut.kj.paper.mapper"})
+@MapperScan(basePackages={"lut.kj.choosepaper.mapper"})
 public class MybatisConfiguration {
     @Autowired
     private MybatisProperties mybatisProperties;

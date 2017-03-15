@@ -1,4 +1,4 @@
-import lut.kj.paper.utils.TkMapper;
+import lut.kj.choosepaper.utils.TkMapper;
 
 /**
  * Created by kj on 2017/3/15.

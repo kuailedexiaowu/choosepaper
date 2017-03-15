@@ -1,4 +1,4 @@
-package lut.kj.paper.configuration;
+package lut.kj.choosepaper.configuration;
 
 import org.mybatis.spring.mapper.MapperScannerConfigurer;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
@@ -17,7 +17,7 @@ public class MybatisMapperScannerConfig {
         mapperScannerConfigurer.setSqlSessionFactoryBeanName("sqlSessionFactory");
         mapperScannerConfigurer.setBasePackage("lut.kj.mapper");
         Properties properties = new Properties();
-        properties.setProperty("mappers", "lut.kj.paper.utils.TkMapper");
+        properties.setProperty("mappers", "lut.kj.choosepaper.utils.TkMapper");
         properties.setProperty("notEmpty", "false");
         properties.setProperty("IDENTITY", "MYSQL");
         return mapperScannerConfigurer;

@@ -1,4 +1,4 @@
-import lut.kj.paper.PaperApplication;
+import lut.kj.choosepaper.PaperApplication;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.junit.Test;

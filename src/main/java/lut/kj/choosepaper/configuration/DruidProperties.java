@@ -1,4 +1,4 @@
-package lut.kj.paper.configuration;
+package lut.kj.choosepaper.configuration;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;

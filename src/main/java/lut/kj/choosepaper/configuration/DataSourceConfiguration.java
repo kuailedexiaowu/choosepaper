@@ -1,4 +1,4 @@
-package lut.kj.paper.configuration;
+package lut.kj.choosepaper.configuration;
 
 import com.alibaba.druid.pool.DruidDataSourceFactory;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,4 +1,4 @@
-package lut.kj.paper.utils;
+package lut.kj.choosepaper.utils;
 
 import lombok.Data;
 
