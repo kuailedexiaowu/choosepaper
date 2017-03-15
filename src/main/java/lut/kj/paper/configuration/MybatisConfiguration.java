@@ -1,7 +1,5 @@
 package lut.kj.paper.configuration;
 
-import com.github.pagehelper.PageHelper;
-import org.apache.ibatis.plugin.Interceptor;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
@@ -25,9 +23,6 @@ import javax.sql.DataSource;
 public class MybatisConfiguration {
     @Autowired
     private MybatisProperties mybatisProperties;
-
-    @Autowired(required = false)
-    private PageHelper pageHelper;
 
     @Autowired
     private ResourceLoader resourceLoader=new DefaultResourceLoader();
