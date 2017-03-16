@@ -2,6 +2,8 @@ package lut.kj.choosepaper.paper.domin;
 
 import lombok.Data;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import java.sql.Timestamp;
 
 /**
@@ -9,10 +11,13 @@ import java.sql.Timestamp;
  */
 @Data
 public class Paper {
+    @Id
+    @GeneratedValue
     private String id;
     private String name;
     private String desc;
     private String teacherId;
     private String student_Id;
-    private Timestamp createTime;
+    private String require;
+    private Timestamp createTime=new Timestamp(System.currentTimeMillis());
 }

@@ -1,13 +1,12 @@
-package lut.kj.choosepaper.student.domin;
+package lut.kj.choosepaper.student.invo;
 
 import lombok.Data;
-import lut.kj.choosepaper.core.BaseInfo;
 
 /**
- * Created by kj on 2017/3/15.
+ * Created by kj on 2017/3/16.
  */
 @Data
-public class Student extends BaseInfo {
+public class UpdateStudentIn {
     private String id;
     private String name;
     private int gender;
