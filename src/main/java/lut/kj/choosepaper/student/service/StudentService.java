@@ -11,5 +11,5 @@ public interface StudentService {
     Message addStudent(Student student);
     Message updateStudent(Student student);
     Message deleteStudent(String id);
-    PageInfo<Student> listAll(int pageSize, int pageNo);
+    PageInfo<Student> listAll(int pageNo, int pageSize);
 }

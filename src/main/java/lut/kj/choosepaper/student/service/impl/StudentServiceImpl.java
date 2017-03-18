@@ -40,21 +40,20 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public PageInfo<Student> listAll(int pageSize, int pageNo) {
+    public PageInfo<Student> listAll(int pageNo, int pageSize) {
         int totalSize = studentMapper.selectAll().size();
         RowBounds rowBounds = new RowBounds((pageNo-1)*pageSize, pageSize);
-        Student student=new Student();
-        List<Student> students = studentMapper.selectByRowBounds(student, rowBounds);
+        List<Student> students = studentMapper.selectByRowBounds(null, rowBounds);
         PageInfo<Student> pageInfo=new PageInfo<Student>(students);
         pageInfo.setTotal(totalSize);
         pageInfo.setCurrentPage(pageNo);
         pageInfo.setPageSize(pageSize);
         pageInfo.setSize(students.size());
         if(totalSize % pageSize != 0){
-            pageInfo.setPageCount((totalSize % pageSize) + 1);
+            pageInfo.setPageCount((totalSize / pageSize) + 1);
         }
         else{
-            pageInfo.setPageCount(totalSize % pageSize);
+            pageInfo.setPageCount(totalSize / pageSize);
         }
         return pageInfo;
     }

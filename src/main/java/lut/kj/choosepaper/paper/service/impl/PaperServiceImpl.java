@@ -41,51 +41,47 @@ public class PaperServiceImpl implements PaperService {
     }
 
     @Override
-    public Message deletePaper(String id) {
-        paperMapper.deleteByPrimaryKey(id);
+    public Message deletePaper(String[] ids) {
+        for(String id:ids){
+        paperMapper.deleteByPrimaryKey(id);}
         return new Message("删除成功");
     }
 
     @Override
-    public PageInfo<Paper> listAll(int pageSize, int pageNo) {
+    public PageInfo<Paper> listAll(int pageNo, int pageSize) {
         int totalSize = paperMapper.selectAll().size();
         RowBounds rowBounds = new RowBounds((pageNo-1)*pageSize, pageSize);
-        Paper paper = new Paper();
-        paper.setCreateTime(null);
-        List<Paper> papers = paperMapper.selectByRowBounds(paper, rowBounds);
+        List<Paper> papers = paperMapper.selectByRowBounds(null, rowBounds);
         PageInfo<Paper> pageInfo=new PageInfo<Paper>(papers);
-        pageInfo.setTotal(totalSize);
         pageInfo.setCurrentPage(pageNo);
+        pageInfo.setTotal(totalSize);
         pageInfo.setPageSize(pageSize);
         pageInfo.setSize(papers.size());
         if(totalSize % pageSize != 0){
-            pageInfo.setPageCount((totalSize % pageSize) + 1);
+            pageInfo.setPageCount((totalSize / pageSize) + 1);
         }
         else{
-            pageInfo.setPageCount(totalSize % pageSize);
+            pageInfo.setPageCount(totalSize / pageSize);
         }
         return pageInfo;
     }
 
     @Override
-    public PageInfo<Paper> listByTeacherId(int pageSize, int pageNo) {
+    public PageInfo<Paper> listByTeacherId(int pageNo, int pageSize) {
 
         int totalSize = paperMapper.selectAll().size();
         RowBounds rowBounds = new RowBounds((pageNo-1)*pageSize, pageSize);
-        Paper paper = new Paper();
-        paper.setCreateTime(null);
-        paper.setTeacherId(UserUtils.getUserId());
-        List<Paper> papers = paperMapper.selectByRowBounds(paper, rowBounds);
+        List<Paper> papers = paperMapper.selectByRowBounds(null, rowBounds);
         PageInfo<Paper> pageInfo=new PageInfo<Paper>(papers);
         pageInfo.setTotal(totalSize);
         pageInfo.setCurrentPage(pageNo);
         pageInfo.setPageSize(pageSize);
         pageInfo.setSize(papers.size());
         if(totalSize % pageSize != 0){
-            pageInfo.setPageCount((totalSize % pageSize) + 1);
+            pageInfo.setPageCount((totalSize / pageSize) + 1);
         }
         else{
-            pageInfo.setPageCount(totalSize % pageSize);
+            pageInfo.setPageCount(totalSize / pageSize);
         }
         return pageInfo;
     }

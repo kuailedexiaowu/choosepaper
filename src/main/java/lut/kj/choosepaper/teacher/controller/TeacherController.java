@@ -41,7 +41,7 @@ public class TeacherController {
     }
 
     @RequestMapping("/list")
-    public PageInfo<Teacher> listAll(int pageSize, int pageNo){
-        return teacherService.listAll(pageSize, pageNo);
+    public PageInfo<Teacher> listAll(int pageNo, int pageSize){
+        return teacherService.listAll(pageNo, pageSize);
     }
 }

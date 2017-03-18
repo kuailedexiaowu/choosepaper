@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TeacherPaper</title>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/bootstrap.js"></script>
+    <script type="text/javascript" src="js/bootstrap-paginator.js"></script>
+    <script type="text/javascript" src="js/teacherpaper.js"></script>
+    <link type="text/css" rel="stylesheet" href="css/bootstrap.css">
+</head>
+<style type="text/css">
+    table{
+        margin-top: 15px;
+    }
+    button{
+        height: 40px;
+        width: 70px;
+    }
+    ul{
+        margin-right: 0%;
+    }
+</style>
+<script>
+    $(function () {
+        teacherpaper(1,5);
+    });
+</script>
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-1">
+        </div>
+        <div class="col-md-10 page-header">
+            <h3>
+                <strong>我的论文</strong>
+            </h3>
+        </div>
+        <div class="col-md-1">
+        </div>
+    </div>
+
+    <div class="row ">
+        <div class="col-md-1">
+        </div>
+        <div class="col-md-10">
+            <div class="btn-group btn-group-lg">
+
+                <button id="add" class="btn btn-success" type="button" onclick="addin()">
+                    增加
+                </button>
+                <button id="update" class="btn btn-success" type="button" onclick="update()">
+                    修改
+                </button>
+                <button id="detail" class="btn btn-success" type="button" onclick="detail()">
+                    详情
+                </button>
+                <button id="delete" class="btn btn-danger" type="button" onclick="deletein()">
+                    删除
+                </button>
+
+            </div>
+        </div>
+        <div class="col-md-1">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-1">
+        </div>
+        <div id="table" class="col-md-10">
+
+        </div>
+        <div class="col-md-1">
+        </div>
+    </div>
+
+    <div class="row ">
+        <div class="col-md-8">
+
+        </div>
+        <div class="col-md-3" style="text-align: right">
+            <ul id="paginator"></ul>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+</div>
+
+<div class="modal fade" id="addModel" tabindex="-1" role="dialog" aria-labelledby="addLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close glyphicon glyphicon-remove btn-default" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title " id="addLabel" align="center"><strong>发布新论文</strong></h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" role="form" >
+                    <div class="form-group">
+                        <label  class="col-sm-2 control-label col-sm-offset-1">
+                            名称
+                        </label>
+                        <div class="col-sm-7">
+                            <input class="form-control" id="name"  type="text"/>
+                        </div>
+                     </div>
+                    <div class="form-group">
+                        <label  class="col-sm-2 control-label col-sm-offset-1">
+                            描述
+                        </label>
+                        <div class="col-sm-7">
+                            <textarea class="form-control" id="description" rows="6"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label  class="col-sm-2 control-label col-sm-offset-1">
+                            要求
+                        </label>
+                        <div class="col-sm-7">
+                            <textarea class="form-control" id="demand" rows="8"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-3 col-sm-5">
+                            <button type="button" class="btn btn-success"data-dismiss="modal" onclick="addsub()">提交</button>
+                            <button type="button" class="btn btn-info" data-dismiss="modal">关闭</button>
+                        </div>
+                    </div>
+                </form>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+</div>
+
+<div class="modal fade" id="updateModel" tabindex="-1" role="dialog" aria-labelledby="updateLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close glyphicon glyphicon-remove btn-default" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title " id="updateLabel" align="center"><strong>更新论文</strong></h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" role="form" >
+                    <div class="form-group">
+                        <label  class="col-sm-2 control-label col-sm-offset-1 ">
+                            序号
+                        </label>
+                        <div class="col-sm-7">
+                            <input class="form-control" id="id2"  type="text" disabled/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label  class="col-sm-2 control-label col-sm-offset-1">
+                            名称
+                        </label>
+                        <div class="col-sm-7">
+                            <input class="form-control" id="name2"  type="text"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label  class="col-sm-2 control-label col-sm-offset-1">
+                            描述
+                        </label>
+                        <div class="col-sm-7">
+                            <textarea class="form-control" id="description2" rows="6"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label  class="col-sm-2 control-label col-sm-offset-1">
+                            要求
+                        </label>
+                        <div class="col-sm-7">
+                            <textarea class="form-control" id="demand2" rows="8"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-3 col-sm-5">
+                            <button type="button" class="btn btn-success"data-dismiss="modal" onclick="updatesub()">提交</button>
+                            <button type="button" class="btn btn-info" data-dismiss="modal">关闭</button>
+                        </div>
+                    </div>
+                </form>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+</div>
+
+<div class="modal fade" id="detailModel" tabindex="-1" role="dialog" aria-labelledby="detailLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close glyphicon glyphicon-remove btn-default" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title " id="detailLabel" align="center"><strong>论文详情</strong></h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" role="form" >
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                        <label  class="col-sm-2 control-label col-sm-offset-1">
+                            名称
+                        </label>
+                        <div class="col-sm-7">
+                            <input class="form-control" id="name3"  type="text"/>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label  class="col-sm-3 control-label ">
+                                创建时间
+                            </label>
+                            <div class="col-sm-7">
+                                <input class="form-control" id="create_time3"  type="text"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label  class="col-sm-1 control-label col-sm-offset-1">
+                            描述
+                        </label>
+                        <div class="col-sm-8">
+                            <textarea class="form-control" id="description3" rows="6"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label  class="col-sm-1 control-label col-sm-offset-1">
+                            要求
+                        </label>
+                        <div class="col-sm-8">
+                            <textarea class="form-control" id="demand3" rows="8"></textarea>
+                        </div>
+                    </div>
+                </form>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+</div>
+
+</body>
+</html>

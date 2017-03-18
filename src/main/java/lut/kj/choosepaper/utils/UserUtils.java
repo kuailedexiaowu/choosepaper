@@ -18,8 +18,9 @@ public class UserUtils {
     }
 
     public static String  getUserId(){
-        HttpSession httpSession=getSession();
-        return httpSession.getAttribute("userId").toString();
+       /* HttpSession httpSession=getSession();
+        return httpSession.getAttribute("userId").toString();*/
+        return "19201313";
     }
 }
 

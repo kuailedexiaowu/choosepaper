@@ -33,23 +33,29 @@ public class PaperController {
     public Message updatePaper(@RequestBody UpdatePaperIn updatePaperIn){
         Paper newPaper = new Paper();
         Paper oldPaper = paperService.selectById(updatePaperIn.getId());
+        BeanUtils.copyProperties(oldPaper, newPaper);
         BeanUtils.copyProperties(updatePaperIn, newPaper);
-        newPaper.setCreateTime(oldPaper.getCreateTime());
-        newPaper.setStudent_Id(oldPaper.getId());
         return paperService.updatePaper(newPaper);
     }
 
     @RequestMapping("/delete")
-    public Message deletePaper(String id){
-        return paperService.deletePaper(id);
+    public Message deletePaper(String[] ids){
+        return paperService.deletePaper(ids);
     }
 
     @RequestMapping("/list")
-    public PageInfo<Paper> listAll(int pageSize, int pageNo){
-        return paperService.listAll(pageSize, pageNo);
+    public PageInfo<Paper> listAll(int pageNo, int pageSize){
+        return paperService.listAll(pageNo, pageSize);
     }
 
-    public PageInfo<Paper> listByTeacherId(int pageSize, int pageNo){
-        return paperService.listByTeacherId(pageSize,pageNo);
+    @RequestMapping("/listByTeacherId")
+    public PageInfo<Paper> listByTeacherId(int pageNo, int pageSize){
+        return paperService.listByTeacherId(pageNo,pageSize);
     }
+
+    @RequestMapping("/findByTeacherId")
+    public Paper findById(String id){
+        return paperService.selectById(id);
+    }
+
 }

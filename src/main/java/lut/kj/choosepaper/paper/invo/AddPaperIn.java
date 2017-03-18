@@ -8,6 +8,6 @@ import lombok.Data;
 @Data
 public class AddPaperIn {
     private String name;
-    private String desc;
-    private String require;
+    private String description;
+    private String demand;
 }

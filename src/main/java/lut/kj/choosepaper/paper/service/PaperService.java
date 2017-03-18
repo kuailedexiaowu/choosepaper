@@ -11,8 +11,8 @@ public interface PaperService {
      Message addPaper(Paper paper);
      Message updatePaper(Paper paper);
      Paper selectById(String id);
-     Message deletePaper(String id);
-    PageInfo<Paper> listAll(int pageSize, int pageNo);
-    PageInfo<Paper> listByTeacherId(int pageSize, int pageNo);
+     Message deletePaper(String[] ids);
+    PageInfo<Paper> listAll(int pageNo, int pageSize);
+    PageInfo<Paper> listByTeacherId(int pageNo, int pageSize);
 
 }

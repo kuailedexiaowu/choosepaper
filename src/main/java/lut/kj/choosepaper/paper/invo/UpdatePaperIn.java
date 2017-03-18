@@ -9,7 +9,6 @@ import lombok.Data;
 public class UpdatePaperIn {
     private String id;
     private String name;
-    private String desc;
-    private String teacherId;
-    private String require;
+    private String description;
+    private String demand;
 }

@@ -39,21 +39,20 @@ public class TeacherServiceImpl implements TeacherService {
     }
 
     @Override
-    public PageInfo<Teacher> listAll(int pageSize, int pageNo) {
+    public PageInfo<Teacher> listAll(int pageNo, int pageSize) {
         int totalSize = teacherMapper.selectAll().size();
         RowBounds rowBounds = new RowBounds((pageNo-1)*pageSize, pageSize);
-        Teacher teacher = new Teacher();
-        List<Teacher> teachers = teacherMapper.selectByRowBounds(teacher, rowBounds);
+        List<Teacher> teachers = teacherMapper.selectByRowBounds(null, rowBounds);
         PageInfo<Teacher> pageInfo=new PageInfo<Teacher>(teachers);
         pageInfo.setTotal(totalSize);
         pageInfo.setCurrentPage(pageNo);
         pageInfo.setPageSize(pageSize);
         pageInfo.setSize(teachers.size());
         if(totalSize % pageSize != 0){
-            pageInfo.setPageCount((totalSize % pageSize) + 1);
+            pageInfo.setPageCount((totalSize / pageSize) + 1);
         }
         else{
-            pageInfo.setPageCount(totalSize % pageSize);
+            pageInfo.setPageCount(totalSize / pageSize);
         }
         return pageInfo;
     }

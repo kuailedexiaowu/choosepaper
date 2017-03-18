@@ -11,5 +11,5 @@ public interface TeacherService {
     Message addTeacher(Teacher teacher);
     Message updateTeacher(Teacher teacher);
     Message deleteTeacher(String id);
-    PageInfo<Teacher> listAll(int pageSize, int pageNo);
+    PageInfo<Teacher> listAll(int pageNo, int pageSize);
 }
