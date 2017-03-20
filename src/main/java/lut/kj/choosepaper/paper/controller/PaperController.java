@@ -4,6 +4,7 @@ import lut.kj.choosepaper.core.Message;
 import lut.kj.choosepaper.paper.domin.Paper;
 import lut.kj.choosepaper.paper.invo.AddPaperIn;
 import lut.kj.choosepaper.paper.invo.UpdatePaperIn;
+import lut.kj.choosepaper.paper.revo.PaperDetailVo;
 import lut.kj.choosepaper.paper.service.PaperService;
 import lut.kj.choosepaper.utils.PageInfo;
 import lut.kj.choosepaper.utils.UserUtils;
@@ -39,8 +40,13 @@ public class PaperController {
     }
 
     @RequestMapping("/delete")
-    public Message deletePaper(String[] ids){
+    public Message deletePaper(@RequestBody String[] ids){
         return paperService.deletePaper(ids);
+    }
+
+    @RequestMapping("/choose")
+    public Message choosePaper(String id){
+        return paperService.choosePaper(id);
     }
 
     @RequestMapping("/list")
@@ -53,9 +59,13 @@ public class PaperController {
         return paperService.listByTeacherId(pageNo,pageSize);
     }
 
-    @RequestMapping("/findByTeacherId")
-    public Paper findById(String id){
-        return paperService.selectById(id);
+    @RequestMapping("/listUnchoosed")
+    public  PageInfo<Paper> listUnchoosed(int pageNo, int pageSize){
+        return paperService.listUnchoosed(pageNo, pageSize);
     }
 
+    @RequestMapping("/detail")
+    public PaperDetailVo detail(String id){
+        return paperService.detail(id);
+    }
 }

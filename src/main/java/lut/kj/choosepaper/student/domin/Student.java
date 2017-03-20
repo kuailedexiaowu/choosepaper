@@ -8,9 +8,5 @@ import lut.kj.choosepaper.core.BaseInfo;
  */
 @Data
 public class Student extends BaseInfo {
-    private String id;
-    private String name;
-    private int gender;
-    private String tel;
     private String major;
 }

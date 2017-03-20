@@ -10,7 +10,7 @@ server:
   context-path: /choosepaper
 druid:
   datasource:
-    url: jdbc:mysql://localhost:3306/choosepaper?characterEncoding=utf8
+    url: jdbc:mysql://localhost:3306/choosepaper?characterEncoding=utf8&tinyInt1isBit=false
     username: cbuser
     password: cbpass
 mybatis:

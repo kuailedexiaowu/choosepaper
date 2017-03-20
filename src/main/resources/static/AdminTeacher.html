@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AdminTeacher</title>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/bootstrap.js"></script>
+    <script type="text/javascript" src="js/bootstrap-paginator.js"></script>
+    <script type="text/javascript" src="js/adminteacher.js"></script>
+    <link type="text/css" rel="stylesheet" href="css/bootstrap.css">
+</head>
+<style type="text/css">
+    table{
+        margin-top: 15px;
+    }
+    button{
+        height: 40px;
+        width: 70px;
+    }
+    ul{
+        margin-right: 0%;
+    }
+</style>
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-1">
+        </div>
+        <div class="col-md-10 page-header">
+            <h3>
+                <strong>教师管理</strong>
+            </h3>
+        </div>
+        <div class="col-md-1">
+        </div>
+    </div>
+
+    <div class="row ">
+        <div class="col-md-1">
+        </div>
+        <div class="col-md-10">
+            <div class="btn-group btn-group-lg">
+
+                <button id="add" class="btn btn-success" type="button" onclick="addin()">
+                    增加
+                </button>
+                <button id="update" class="btn btn-success" type="button" onclick="update()">
+                    修改
+                </button>
+                <button id="delete" class="btn btn-danger" type="button" onclick="deletein()">
+                    删除
+                </button>
+
+            </div>
+        </div>
+        <div class="col-md-1">
+        </div>
+    </div>
+</body>
+</html>

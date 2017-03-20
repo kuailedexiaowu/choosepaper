@@ -3,15 +3,22 @@ package lut.kj.choosepaper.paper.service.impl;
 
 import lut.kj.choosepaper.core.Message;
 import lut.kj.choosepaper.mapper.PaperMapper;
+import lut.kj.choosepaper.mapper.StudentMapper;
+import lut.kj.choosepaper.mapper.TeacherMapper;
 import lut.kj.choosepaper.paper.domin.Paper;
+import lut.kj.choosepaper.paper.revo.PaperDetailVo;
 import lut.kj.choosepaper.paper.service.PaperService;
+import lut.kj.choosepaper.student.domin.Student;
+import lut.kj.choosepaper.teacher.domin.Teacher;
 import lut.kj.choosepaper.utils.PageInfo;
 import lut.kj.choosepaper.utils.UserUtils;
 import org.apache.ibatis.session.RowBounds;
-import org.h2.mvstore.Page;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -21,6 +28,12 @@ import java.util.List;
 public class PaperServiceImpl implements PaperService {
     @Autowired
     PaperMapper paperMapper;
+
+    @Autowired
+    StudentMapper studentMapper;
+
+    @Autowired
+    TeacherMapper teacherMapper;
 
     @Override
     public Message addPaper(Paper paper){
@@ -48,6 +61,16 @@ public class PaperServiceImpl implements PaperService {
     }
 
     @Override
+    public Message choosePaper(String id) {
+        Paper paper=new Paper();
+        paper.setId(id);
+        paper=paperMapper.selectByPrimaryKey(paper);
+        paper.setStudentId(UserUtils.getUserId());
+        paperMapper.updateByPrimaryKey(paper);
+        return new Message("选择成功");
+    }
+
+    @Override
     public PageInfo<Paper> listAll(int pageNo, int pageSize) {
         int totalSize = paperMapper.selectAll().size();
         RowBounds rowBounds = new RowBounds((pageNo-1)*pageSize, pageSize);
@@ -71,7 +94,10 @@ public class PaperServiceImpl implements PaperService {
 
         int totalSize = paperMapper.selectAll().size();
         RowBounds rowBounds = new RowBounds((pageNo-1)*pageSize, pageSize);
-        List<Paper> papers = paperMapper.selectByRowBounds(null, rowBounds);
+        Paper paper = new Paper();
+        paper.setId(null);
+        paper.setTeacherId(UserUtils.getUserId());
+        List<Paper> papers = paperMapper.selectByRowBounds(paper, rowBounds);
         PageInfo<Paper> pageInfo=new PageInfo<Paper>(papers);
         pageInfo.setTotal(totalSize);
         pageInfo.setCurrentPage(pageNo);
@@ -85,4 +111,44 @@ public class PaperServiceImpl implements PaperService {
         }
         return pageInfo;
     }
+
+    @Override
+    public PageInfo<Paper> listUnchoosed(int pageNo, int pageSize) {
+        List<Paper> papers = paperMapper.selectAll();
+        Iterator<Paper> iterator=papers.iterator();
+        Paper paper;
+        while(iterator.hasNext()){
+            paper=iterator.next();
+            if(null!=paper.getStudentId()){
+                iterator.remove();
+            }
+        }
+        int totalSize=papers.size();
+        PageInfo<Paper> pageInfo=new PageInfo<Paper>(papers);
+        pageInfo.setTotal(totalSize);
+        pageInfo.setCurrentPage(pageNo);
+        pageInfo.setPageSize(pageSize);
+        pageInfo.setSize(papers.size());
+        if(totalSize % pageSize != 0){
+            pageInfo.setPageCount((totalSize / pageSize) + 1);
+        }
+        else{
+            pageInfo.setPageCount(totalSize / pageSize);
+        }
+        return pageInfo;
+    }
+
+    @Override
+    public PaperDetailVo detail(String id) {
+        PaperDetailVo paperDetailVo=new PaperDetailVo();
+        Paper paper=paperMapper.selectByPrimaryKey(id);
+        BeanUtils.copyProperties(paper, paperDetailVo);
+        Student student=studentMapper.selectByPrimaryKey(paper.getStudentId());
+        paperDetailVo.setStudent(student);
+        Teacher teacher=teacherMapper.selectByPrimaryKey(paper.getTeacherId());
+        paperDetailVo.setTeacher(teacher);
+        return paperDetailVo;
+    }
+
+
 }
