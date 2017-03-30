@@ -2,29 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="94c6c25b-4a0a-41c9-ab04-10711cbb64d3" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/lut/kj/choosepaper/admin/invo/AddStudentIn.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/lut/kj/choosepaper/admin/invo/AddTeacherIn.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/lut/kj/choosepaper/admin/invo/ResetStudentIn.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/lut/kj/choosepaper/admin/invo/ResetTeacherIn.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/lut/kj/choosepaper/admin/invo/UpdateStudentIn.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/lut/kj/choosepaper/admin/invo/UpdateTeacherIn.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/lut/kj/choosepaper/admin/revo/StudentUser.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/lut/kj/choosepaper/admin/revo/TeacherUser.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/paper.iml" afterPath="$PROJECT_DIR$/paper.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/lut/kj/choosepaper/admin/controller/AdminController.java" afterPath="$PROJECT_DIR$/src/main/java/lut/kj/choosepaper/admin/controller/AdminController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/lut/kj/choosepaper/admin/service/AdminService.java" afterPath="$PROJECT_DIR$/src/main/java/lut/kj/choosepaper/admin/service/AdminService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/lut/kj/choosepaper/admin/service/impl/AdminServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/lut/kj/choosepaper/admin/service/impl/AdminServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/lut/kj/choosepaper/student/controller/StudentController.java" afterPath="$PROJECT_DIR$/src/main/java/lut/kj/choosepaper/student/controller/StudentController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/lut/kj/choosepaper/student/invo/AddStudentIn.java" afterPath="$PROJECT_DIR$/src/main/java/lut/kj/choosepaper/student/invo/AddStudentIn.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/lut/kj/choosepaper/student/service/StudentService.java" afterPath="$PROJECT_DIR$/src/main/java/lut/kj/choosepaper/student/service/StudentService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/lut/kj/choosepaper/student/service/impl/StudentServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/lut/kj/choosepaper/student/service/impl/StudentServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/lut/kj/choosepaper/teacher/controller/TeacherController.java" afterPath="$PROJECT_DIR$/src/main/java/lut/kj/choosepaper/teacher/controller/TeacherController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/lut/kj/choosepaper/teacher/service/TeacherService.java" afterPath="$PROJECT_DIR$/src/main/java/lut/kj/choosepaper/teacher/service/TeacherService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/lut/kj/choosepaper/teacher/service/impl/TeacherServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/lut/kj/choosepaper/teacher/service/impl/TeacherServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/lut/kj/choosepaper/user/service/impl/UserServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/lut/kj/choosepaper/user/service/impl/UserServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/lut/kj/choosepaper/utils/UserUtils.java" afterPath="$PROJECT_DIR$/src/main/java/lut/kj/choosepaper/utils/UserUtils.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/static/js/adminteacher.js" afterPath="$PROJECT_DIR$/src/main/resources/static/js/adminteacher.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/static/AdminTeacher.html" afterPath="$PROJECT_DIR$/src/main/resources/static/AdminTeacher.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/static/adminstudent.html" afterPath="$PROJECT_DIR$/src/main/resources/static/adminstudent.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/static/js/adminstudent.js" afterPath="$PROJECT_DIR$/src/main/resources/static/js/adminstudent.js" />
     </list>
     <ignored path="paper.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -48,21 +29,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="AdminController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/lut/kj/choosepaper/admin/controller/AdminController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="117" column="34" selection-start-line="117" selection-start-column="34" selection-end-line="117" selection-end-column="34" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="adminteacher.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="adminteacher.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/static/adminteacher.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="132">
-              <caret line="20" column="25" selection-start-line="20" selection-start-column="25" selection-end-line="20" selection-end-column="25" />
+            <state relative-caret-position="1573">
+              <caret line="231" column="7" selection-start-line="164" selection-start-column="0" selection-end-line="231" selection-end-column="7" />
               <folding />
             </state>
           </provider>
@@ -71,38 +42,38 @@
       <file leaf-file-name="adminteacher.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/adminteacher.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4312">
-              <caret line="238" column="20" selection-start-line="238" selection-start-column="20" selection-end-line="238" selection-end-column="20" />
+            <state relative-caret-position="144">
+              <caret line="290" column="1" selection-start-line="215" selection-start-column="0" selection-end-line="290" selection-end-column="1" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="teacherpaper.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/teacherpaper.js">
+      <file leaf-file-name="adminstudent.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/static/adminstudent.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="526">
-              <caret line="250" column="28" selection-start-line="250" selection-start-column="28" selection-end-line="250" selection-end-column="28" />
+            <state relative-caret-position="-253">
+              <caret line="190" column="66" selection-start-line="190" selection-start-column="66" selection-end-line="190" selection-end-column="66" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AdminService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/lut/kj/choosepaper/admin/service/AdminService.java">
+      <file leaf-file-name="adminstudent.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/adminstudent.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+            <state relative-caret-position="1230">
+              <caret line="237" column="43" selection-start-line="237" selection-start-column="43" selection-end-line="237" selection-end-column="43" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AdminServiceImpl.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/lut/kj/choosepaper/admin/service/impl/AdminServiceImpl.java">
+      <file leaf-file-name="Student.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/lut/kj/choosepaper/student/domin/Student.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="39" column="56" selection-start-line="39" selection-start-column="56" selection-end-line="39" selection-end-column="56" />
+            <state relative-caret-position="176">
+              <caret line="9" column="33" selection-start-line="9" selection-start-column="33" selection-end-line="9" selection-end-column="33" />
               <folding />
             </state>
           </provider>
@@ -131,7 +102,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/resources/static/teacher.html" />
         <option value="$PROJECT_DIR$/src/main/resources/static/admin.html" />
         <option value="$PROJECT_DIR$/src/main/resources/static/js/teacherpaper.html" />
         <option value="$PROJECT_DIR$/src/main/java/lut/kj/choosepaper/paper/invo/AddPaperIn.java" />
@@ -139,7 +109,6 @@
         <option value="$PROJECT_DIR$/src/main/java/lut/kj/choosepaper/paper/domin/Paper.java" />
         <option value="$PROJECT_DIR$/src/main/java/lut/kj/choosepaper/paper/invo/UpdatePaperIn.java" />
         <option value="$PROJECT_DIR$/src/main/java/lut/kj/choosepaper/configuration/MybatisMapperScannerConfig.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/static/adminstudent.html" />
         <option value="$PROJECT_DIR$/src/main/resources/static/AdminTeacher.html" />
         <option value="$PROJECT_DIR$/src/main/resources/static/teacherpaper.html" />
         <option value="$PROJECT_DIR$/src/main/java/lut/kj/choosepaper/user/domin/User.java" />
@@ -182,6 +151,8 @@
         <option value="$PROJECT_DIR$/src/main/java/lut/kj/choosepaper/teacher/service/impl/TeacherServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/resources/static/js/adminteacher.js" />
         <option value="$PROJECT_DIR$/src/main/java/lut/kj/choosepaper/admin/service/impl/AdminServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/adminstudent.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/static/js/adminstudent.js" />
       </list>
     </option>
   </component>
@@ -1943,7 +1914,7 @@
       <workItem from="1489973252440" duration="17403000" />
       <workItem from="1490166855705" duration="13000" />
       <workItem from="1490328148967" duration="337000" />
-      <workItem from="1490842198784" duration="12240000" />
+      <workItem from="1490842198784" duration="14595000" />
     </task>
     <task id="LOCAL-00001" summary="mybatis配置&#10;">
       <created>1489477521191</created>
@@ -2029,7 +2000,14 @@
       <option name="project" value="LOCAL" />
       <updated>1489998498935</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="完成adminTeacher.html">
+      <created>1490857727484</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1490857727484</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -2065,7 +2043,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="123128000" />
+    <option name="totallyTimeSpent" value="125483000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -2126,7 +2104,8 @@
     <MESSAGE value="paper,student,teacher curd" />
     <MESSAGE value="完成teacherpaper.html" />
     <MESSAGE value="完成studentpaper.html" />
-    <option name="LAST_COMMIT_MESSAGE" value="完成studentpaper.html" />
+    <MESSAGE value="完成adminTeacher.html" />
+    <option name="LAST_COMMIT_MESSAGE" value="完成adminTeacher.html" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -2137,13 +2116,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/lut/kj/choosepaper/paper/service/impl/PaperServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="282">
-          <caret line="147" column="0" selection-start-line="147" selection-start-column="0" selection-end-line="147" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/lut/kj/choosepaper/paper/invo/UpdatePaperIn.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="176">
@@ -2249,22 +2221,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
           <caret line="9" column="4" selection-start-line="9" selection-start-column="4" selection-end-line="13" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/lut/kj/choosepaper/student/domin/Student.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="9" column="34" selection-start-line="9" selection-start-column="34" selection-end-line="9" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/adminstudent.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="9" column="7" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2477,14 +2433,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/lut/kj/choosepaper/core/BaseInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="13" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/lut/kj/choosepaper/teacher/domin/Teacher.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="176">
@@ -2525,18 +2473,50 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/adminteacher.js">
+    <entry file="file://$PROJECT_DIR$/src/main/java/lut/kj/choosepaper/core/BaseInfo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4312">
-          <caret line="238" column="20" selection-start-line="238" selection-start-column="20" selection-end-line="238" selection-end-column="20" />
+        <state relative-caret-position="127">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/lut/kj/choosepaper/student/domin/Student.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="9" column="33" selection-start-line="9" selection-start-column="33" selection-end-line="9" selection-end-column="33" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/static/adminteacher.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="20" column="25" selection-start-line="20" selection-start-column="25" selection-end-line="20" selection-end-column="25" />
+        <state relative-caret-position="1573">
+          <caret line="231" column="7" selection-start-line="164" selection-start-column="0" selection-end-line="231" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/adminstudent.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-253">
+          <caret line="190" column="66" selection-start-line="190" selection-start-column="66" selection-end-line="190" selection-end-column="66" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/adminteacher.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="290" column="1" selection-start-line="215" selection-start-column="0" selection-end-line="290" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/js/adminstudent.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1230">
+          <caret line="237" column="43" selection-start-line="237" selection-start-column="43" selection-end-line="237" selection-end-column="43" />
           <folding />
         </state>
       </provider>
