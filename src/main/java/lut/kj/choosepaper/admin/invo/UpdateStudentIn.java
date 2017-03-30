@@ -1,12 +1,12 @@
-package lut.kj.choosepaper.student.invo;
+package lut.kj.choosepaper.admin.invo;
 
 import lombok.Data;
 
 /**
- * Created by kj on 2017/3/16.
+ * Created by kj on 2017/3/20.
  */
 @Data
-public class AddStudentIn {
+public class UpdateStudentIn {
     private String id;
     private String name;
     private int gender;

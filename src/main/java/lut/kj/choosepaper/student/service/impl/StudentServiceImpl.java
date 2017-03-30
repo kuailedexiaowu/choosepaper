@@ -34,8 +34,14 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public Message deleteStudent(String id) {
-        studentMapper.deleteByPrimaryKey(id);
+    public Student findById(String id) {
+        return studentMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
+    public Message deleteStudent(String[] ids) {
+        for(String id : ids){
+        studentMapper.deleteByPrimaryKey(id);}
         return new Message("删除成功");
     }
 

@@ -28,14 +28,20 @@ public class TeacherServiceImpl implements TeacherService {
 
     @Override
     public Message updateTeacher(Teacher teacher) {
-        teacherMapper.insert(teacher);
+        teacherMapper.updateByPrimaryKey(teacher);
         return new Message("更新成功");
     }
 
     @Override
-    public Message deleteTeacher(String id) {
-        teacherMapper.deleteByPrimaryKey(id);
+    public Message deleteTeacher(String[] ids) {
+        for(String id : ids){
+        teacherMapper.deleteByPrimaryKey(id);}
         return new Message("删除成功");
+    }
+
+    @Override
+    public Teacher findById(String id) {
+        return teacherMapper.selectByPrimaryKey(id);
     }
 
     @Override

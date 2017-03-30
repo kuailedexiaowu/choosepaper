@@ -10,6 +10,7 @@ import lut.kj.choosepaper.utils.PageInfo;
 public interface TeacherService {
     Message addTeacher(Teacher teacher);
     Message updateTeacher(Teacher teacher);
-    Message deleteTeacher(String id);
+    Message deleteTeacher(String[] ids);
+    Teacher findById(String id);
     PageInfo<Teacher> listAll(int pageNo, int pageSize);
 }

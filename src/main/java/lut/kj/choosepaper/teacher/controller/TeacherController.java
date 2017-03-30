@@ -36,8 +36,8 @@ public class TeacherController {
     }
 
     @RequestMapping("/delete")
-    public Message deleteTeacher(String id){
-        return teacherService.deleteTeacher(id);
+    public Message deleteTeacher(String[] ids){
+        return teacherService.deleteTeacher(ids);
     }
 
     @RequestMapping("/list")

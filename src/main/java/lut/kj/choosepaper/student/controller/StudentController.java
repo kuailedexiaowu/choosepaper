@@ -39,8 +39,8 @@ public class StudentController {
     }
 
     @RequestMapping("/delete")
-    public Message deleteStudent(String id){
-        return studentService.deleteStudent(id);
+    public Message deleteStudent(String[] ids){
+        return studentService.deleteStudent(ids);
     }
 
     @RequestMapping("/list")
