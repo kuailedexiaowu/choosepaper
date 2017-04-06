@@ -9,6 +9,7 @@ import lut.kj.choosepaper.user.domin.User;
 import lut.kj.choosepaper.user.invo.AddUserIn;
 import lut.kj.choosepaper.user.invo.UpdateUserIn;
 import lut.kj.choosepaper.user.service.UserService;
+import lut.kj.choosepaper.utils.UserUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequestMapping("/user")
 public class UserController {
 
     @Autowired
@@ -40,8 +42,15 @@ public class UserController {
         return userService.updateUser(user);
     }
 
-    @RequestMapping("findById")
+    @RequestMapping("/findById")
     public User findById(String id){
         return userService.findById(id);
     }
+
+    @RequestMapping("/getUserId")
+    public String getUserId(){
+        return "12345678";
+    }
 }
+
+

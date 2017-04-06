@@ -47,4 +47,9 @@ public class StudentController {
     public PageInfo<Student> listAll(int pageNo, int pageSize){
         return studentService.listAll(pageNo, pageSize);
     }
+
+    @RequestMapping("/findById")
+    public Student findById(String id){
+        return studentService.findById(id);
+    }
 }

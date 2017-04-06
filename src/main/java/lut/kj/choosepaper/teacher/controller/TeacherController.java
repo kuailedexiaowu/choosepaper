@@ -44,4 +44,9 @@ public class TeacherController {
     public PageInfo<Teacher> listAll(int pageNo, int pageSize){
         return teacherService.listAll(pageNo, pageSize);
     }
+
+    @RequestMapping("/findById")
+    public Teacher findById(String id){
+        return teacherService.findById(id);
+    };
 }
