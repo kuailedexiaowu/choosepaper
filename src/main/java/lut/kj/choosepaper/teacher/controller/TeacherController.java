@@ -4,6 +4,7 @@ import lut.kj.choosepaper.core.Message;
 import lut.kj.choosepaper.teacher.domin.Teacher;
 import lut.kj.choosepaper.teacher.invo.AddTeacherIn;
 import lut.kj.choosepaper.teacher.invo.UpdateTeacherIn;
+import lut.kj.choosepaper.teacher.revo.OverViewOutVo;
 import lut.kj.choosepaper.teacher.service.TeacherService;
 import lut.kj.choosepaper.utils.PageInfo;
 import org.springframework.beans.BeanUtils;
@@ -48,5 +49,14 @@ public class TeacherController {
     @RequestMapping("/findById")
     public Teacher findById(String id){
         return teacherService.findById(id);
-    };
+    }
+
+    @RequestMapping("/overview")
+    public OverViewOutVo overView(String id){
+        OverViewOutVo overViewOutVo = new OverViewOutVo();
+        overViewOutVo.setTotal(teacherService.queryPaperTotalCount(id));
+        overViewOutVo.setChoosed(teacherService.queryPaperChoosedCount(id));
+        overViewOutVo.setUnchoosed(teacherService.queryPaperUnchoosedCount(id));
+        return overViewOutVo;
+    }
 }

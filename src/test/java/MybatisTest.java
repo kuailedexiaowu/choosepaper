@@ -76,4 +76,20 @@ public class MybatisTest {
     public void findByStudentId(){
         studentMapper.selectByPrimaryKey("13240206");
     }
+
+    @Test
+    public void testTeacherTotalPaperCount(){
+        int count = teacherService.queryPaperTotalCount("12345678");
+        System.out.println(count);
+    }
+
+    @Test
+    public void testTeacherUnchoosedPaperCount(){
+        int count = teacherService.queryPaperUnchoosedCount("12345678");
+        System.out.println(count);
+        count = teacherService.queryPaperChoosedCount("12345678");
+        System.out.println(count);
+        count = teacherService.queryTeacherCount();
+        System.out.println(count);
+    }
 }

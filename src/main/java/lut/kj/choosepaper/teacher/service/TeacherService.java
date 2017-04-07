@@ -13,4 +13,8 @@ public interface TeacherService {
     Message deleteTeacher(String[] ids);
     Teacher findById(String id);
     PageInfo<Teacher> listAll(int pageNo, int pageSize);
+    int queryPaperTotalCount(String id);
+    int queryPaperChoosedCount(String id);
+    int queryPaperUnchoosedCount(String id);
+    int queryTeacherCount();
 }

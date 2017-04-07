@@ -1,15 +1,16 @@
 package lut.kj.choosepaper.teacher.service.impl;
 
 import lut.kj.choosepaper.core.Message;
+import lut.kj.choosepaper.mapper.PaperMapper;
 import lut.kj.choosepaper.mapper.TeacherMapper;
 import lut.kj.choosepaper.paper.domin.Paper;
 import lut.kj.choosepaper.teacher.domin.Teacher;
 import lut.kj.choosepaper.teacher.service.TeacherService;
 import lut.kj.choosepaper.utils.PageInfo;
-import lut.kj.choosepaper.utils.UserUtils;
 import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import tk.mybatis.mapper.entity.Example;
 
 import java.util.List;
 
@@ -20,6 +21,10 @@ import java.util.List;
 public class TeacherServiceImpl implements TeacherService {
     @Autowired
     TeacherMapper teacherMapper;
+
+    @Autowired
+    PaperMapper paperMapper;
+
     @Override
     public Message addTeacher(Teacher teacher) {
         teacherMapper.insert(teacher);
@@ -61,5 +66,39 @@ public class TeacherServiceImpl implements TeacherService {
             pageInfo.setPageCount(totalSize / pageSize);
         }
         return pageInfo;
+    }
+    @Override
+    public int queryPaperTotalCount(String id){
+        Example example = new Example(Paper.class);
+        example.createCriteria()
+                .andEqualTo("teacherId",id);
+        int count = paperMapper.selectCountByExample(example);
+        return count;
+    }
+
+    @Override
+    public int queryPaperChoosedCount(String id) {
+        Example example = new Example(Paper.class);
+        example.createCriteria()
+                .andEqualTo("teacherId",id)
+                .andIsNotNull("studentId");
+        int count = paperMapper.selectCountByExample(example);
+        return count;
+    }
+
+    @Override
+    public int queryPaperUnchoosedCount(String id) {
+        Example example = new Example(Paper.class);
+        example.createCriteria()
+                .andEqualTo("teacherId",id)
+                .andIsNull("studentId");
+        int count = paperMapper.selectCountByExample(example);
+        return count;
+    }
+
+    @Override
+    public int queryTeacherCount() {
+        int count = teacherMapper.selectCount(null);
+        return count;
     }
 }

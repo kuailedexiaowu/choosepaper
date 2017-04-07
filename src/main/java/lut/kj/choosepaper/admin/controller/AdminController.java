@@ -2,6 +2,7 @@ package lut.kj.choosepaper.admin.controller;
 
 
 import lut.kj.choosepaper.admin.invo.*;
+import lut.kj.choosepaper.admin.revo.AdminOverviewOutVo;
 import lut.kj.choosepaper.admin.revo.StudentUser;
 import lut.kj.choosepaper.admin.revo.TeacherUser;
 import lut.kj.choosepaper.admin.service.AdminService;
@@ -116,6 +117,15 @@ public class AdminController {
     @RequestMapping("/listTeacher")
     public PageInfo<TeacherUser> listTeacher(int pageNo, int pageSize){
         return adminService.listTeacher(pageNo, pageSize);
+    }
+
+    @RequestMapping("/overview")
+    public AdminOverviewOutVo overview(){
+        AdminOverviewOutVo adminOverviewOutVo = new AdminOverviewOutVo();
+        adminOverviewOutVo.setTeacherCount(teacherService.queryTeacherCount());
+        adminOverviewOutVo.setPaperCount(studentService.queryPaperTotalCount());
+        adminOverviewOutVo.setStudentCount(studentService.queryStudentCount());
+        return adminOverviewOutVo;
     }
 
 }

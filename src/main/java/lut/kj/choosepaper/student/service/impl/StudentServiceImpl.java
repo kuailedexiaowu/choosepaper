@@ -1,6 +1,7 @@
 package lut.kj.choosepaper.student.service.impl;
 
 import lut.kj.choosepaper.core.Message;
+import lut.kj.choosepaper.mapper.PaperMapper;
 import lut.kj.choosepaper.mapper.StudentMapper;
 import lut.kj.choosepaper.paper.domin.Paper;
 import lut.kj.choosepaper.student.domin.Student;
@@ -10,6 +11,7 @@ import lut.kj.choosepaper.utils.UserUtils;
 import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import tk.mybatis.mapper.entity.Example;
 
 import java.util.List;
 
@@ -20,6 +22,9 @@ import java.util.List;
 public class StudentServiceImpl implements StudentService {
     @Autowired
     StudentMapper studentMapper;
+
+    @Autowired
+    PaperMapper paperMapper;
 
     @Override
     public Message addStudent(Student student) {
@@ -62,5 +67,29 @@ public class StudentServiceImpl implements StudentService {
             pageInfo.setPageCount(totalSize / pageSize);
         }
         return pageInfo;
+    }
+
+    @Override
+    public int queryPaperTotalCount() {
+        return paperMapper.selectCount(null);
+    }
+
+    @Override
+    public int queryPaperUnchoosedCount() {
+        Example example = new Example(Paper.class);
+        example.createCriteria().andIsNull("studentId");
+        return paperMapper.selectCountByExample(example);
+    }
+
+    @Override
+    public int queryPaperChoosedCount() {
+        Example example = new Example(Paper.class);
+        example.createCriteria().andIsNotNull("studentId");
+        return paperMapper.selectCountByExample(example);
+    }
+
+    @Override
+    public int queryStudentCount() {
+        return studentMapper.selectCount(null);
     }
 }

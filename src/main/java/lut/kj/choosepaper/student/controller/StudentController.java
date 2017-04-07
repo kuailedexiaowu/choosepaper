@@ -5,6 +5,7 @@ import lut.kj.choosepaper.mapper.TeacherMapper;
 import lut.kj.choosepaper.paper.invo.UpdatePaperIn;
 import lut.kj.choosepaper.student.domin.Student;
 import lut.kj.choosepaper.student.invo.AddStudentIn;
+import lut.kj.choosepaper.student.revo.OverViewVo;
 import lut.kj.choosepaper.student.service.StudentService;
 import lut.kj.choosepaper.teacher.domin.Teacher;
 import lut.kj.choosepaper.teacher.service.TeacherService;
@@ -23,6 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class StudentController {
     @Autowired
     StudentService studentService;
+
 
     @RequestMapping("/add")
     public Message addStudent(@RequestBody AddStudentIn addStudentIn){
@@ -51,5 +53,14 @@ public class StudentController {
     @RequestMapping("/findById")
     public Student findById(String id){
         return studentService.findById(id);
+    }
+
+    @RequestMapping("/overview")
+    public OverViewVo overview(){
+        OverViewVo overViewVo = new OverViewVo();
+        overViewVo.setUnchoosed(studentService.queryPaperUnchoosedCount());
+        overViewVo.setChoosed(studentService.queryPaperChoosedCount());
+        overViewVo.setTotal(studentService.queryPaperTotalCount());
+        return overViewVo;
     }
 }
