@@ -46,10 +46,10 @@ function submit1() {
         tel:$("#tel").val(),gender:gendertoint($("#gender").val().trim())}
     $.post({
         url:"/choosepaper/admin/updateStudent",
-        async:true,
-        dataType:'json',
+        async:true, dataType:'json',
         data:JSON.stringify(updateStudentIn),
         contentType:"application/json",
+
         success:function (data) {
             if($("#password1").val().trim()=="" || $("#password1").val().trim()==""){
                 alert(data.message)

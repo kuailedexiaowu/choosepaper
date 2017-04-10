@@ -14,6 +14,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -50,6 +51,14 @@ public class UserController {
     @RequestMapping("/getUserId")
     public String getUserId(){
         return "12345678";
+    }
+
+    @RequestMapping(path = "/login",method = RequestMethod.POST)
+    public Message login(String userName,String password){
+       User user = new User();
+        user.setPassword(password);
+        user.setUserName(userName);
+        return userService.login(user);
     }
 }
 

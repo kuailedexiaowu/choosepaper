@@ -3,10 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <title>choose paper</title>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/bootstrap.js"></script>
+    <script type="text/javascript" src="js/bootstrapValidator.min.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <link type="text/css" rel="stylesheet" href="css/bootstrap.css">
+    <link type="text/css" rel="stylesheet" href="css/bootstrapValidator.min.css">
 </head>
+<style>
+    body{
+        background:  url('./img/indexback.jpg');
+        background-repeat: no-repeat;
+        background-position: top;
+        background-color: #f9e9ff;
+        background-size: 70%;
+    }
+    div.panel{
+        background-color: #8eb0ff;
+        margin-top: 35px;
+        margin-left: 860px;
+        height: 250px;
+        border-radius: 0;
+        box-shadow: #666 0px 0px 10px;
+    }
+</style>
 <body>
-<div style=" background-image: image('/img/indexback.jpg')">
 
+<div class="panel panel-default col-md-3 col-md-offset-6">
+    <div class="panel-body text-center">
+        <strong>毕业设计论文选题系统</strong>
+    </div>
+    <div class="panel-body">
+        <form class="form-horizontal" role="form" action="/choosepaper/user/login" method="post" accept-charset="">
+            <div class="form-group">
+                <label  class="col-sm-3 control-label">
+                    账号
+                </label>
+                <div class="col-sm-8">
+                    <input class="form-control" autofocus id="userName" name="userName" type="text"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label  class="col-sm-3 control-label">
+                    密码
+                </label>
+                <div class="col-sm-8">
+                    <input class="form-control" id="password" name="password"  type="password"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-3 col-sm-3">
+                    <button type="submit" class="btn btn-default">提交</button>
+                </div>
+                <div class="col-sm-5">
+                    <button type="button" class="btn btn-default" onclick="cancel()">取消</button>
+                </div>
+            </div>
+         </form>
+    </div>
 </div>
 </body>
 </html>
