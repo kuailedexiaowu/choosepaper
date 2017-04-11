@@ -50,7 +50,7 @@ public class UserController {
 
     @RequestMapping("/getUserId")
     public String getUserId(){
-        return "12345678";
+        return UserUtils.getUserId();
     }
 
     @RequestMapping(path = "/login",method = RequestMethod.POST)

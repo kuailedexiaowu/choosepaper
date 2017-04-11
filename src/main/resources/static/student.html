@@ -2,9 +2,75 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/bootstrap.js"></script>
+    <script src="js/angular.js"></script>
+    <script src="js/angular-route.js"></script>
+    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-vertical-menu.css">
     <title>Student</title>
 </head>
-<body>
+<style type="text/css">
+    label{
+        margin-left: 30px;
+    }
+    span{
+        font-size: 25px;
+    }
 
+    .navbar{
+        position:fixed !important;
+    }
+</style>
+<script>
+    angular.module('console',['ngRoute'])
+            .config(['$routeProvider', function($routeProvider){
+                $routeProvider
+                        .when('/info',{templateUrl:'studentinfo.html'})
+                        .when('/paper',{templateUrl:'studentpaper.html'})
+                        .when('/overview',{templateUrl:'studentoverview.html'})
+                        .otherwise({redirectTo:'/'});
+            }]);
+    function overview(){
+        window.location.href="#/overview"
+    }
+    function info() {
+        window.location.href="#/info"
+    }
+    function paper() {
+        window.location.href="#/paper"
+    }
+</script>
+<body ng-app='console'>
+<nav class="navbar navbar-vertical-left">
+    <ul class="nav navbar-nav">
+        <li>
+            <a onclick="overview()">
+                <span class="glyphicon glyphicon-home"></span>
+                <label>信息概览</label>
+            </a>
+        </li>
+        <li>
+            <a onclick="paper()">
+                <span class="glyphicon glyphicon-list-alt"></span>
+                <label>我的论文</label>
+            </a>
+        </li>
+        <li>
+            <a onclick="info()">
+                <span class="glyphicon glyphicon-user"></span>
+                <label>用户信息</label>
+            </a>
+        </li>
+        <li>
+            <a>
+                <span class="glyphicon glyphicon-edit"></span>
+                <label>我的帖子</label>
+            </a>
+        </li>
+    </ul>
+</nav>
+<div id="main" ng-view>
+</div>
 </body>
 </html>
