@@ -30,6 +30,7 @@
                         .when('/paper',{templateUrl:'teacherpaper.html'})
                         .when('/overview',{templateUrl:'teacheroverview.html'})
                         .when('/mytopic',{templateUrl:'mytopic.html'})
+                        .when('/topic',{templateUrl:'topic.html'})
                         .otherwise({redirectTo:'/'});
             }]);
     function overview(){
@@ -43,6 +44,9 @@
     }
     function mytopic() {
         window.location.href="#/mytopic"
+    }
+    function topic() {
+        window.location.href="#/topic"
     }
 </script>
 
@@ -71,6 +75,12 @@
             <a onclick="mytopic()">
                 <span class="glyphicon glyphicon-edit"></span>
                 <label>我的帖子</label>
+            </a>
+        </li>
+        <li>
+            <a onclick="topic()">
+                <span class="glyphicon glyphicon-globe"></span>
+                <label>信息交流</label>
             </a>
         </li>
     </ul>
