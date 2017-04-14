@@ -11,5 +11,6 @@ public interface UserService {
     Message deleteUser(String[] ids);
     Message updateUser(User user);
     User findById(String id);
+    String getUserName(String id);
     Message login(User user);
 }

@@ -61,6 +61,20 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public String getUserName(String id) {
+        String userName = null;
+        Student student = studentMapper.selectByPrimaryKey(id);
+        if(null != student){
+            userName = student.getName();
+        }
+        Teacher teacher = teacherMapper.selectByPrimaryKey(id);
+        if(null != teacher){
+            userName = teacher.getName();
+        }
+        return userName;
+    }
+
+    @Override
     public Message login(User user){
         HttpServletResponse response = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getResponse();
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();

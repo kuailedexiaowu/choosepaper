@@ -29,6 +29,7 @@
                         .when('/info',{templateUrl:'teacherinfo.html'})
                         .when('/paper',{templateUrl:'teacherpaper.html'})
                         .when('/overview',{templateUrl:'teacheroverview.html'})
+                        .when('/mytopic',{templateUrl:'mytopic.html'})
                         .otherwise({redirectTo:'/'});
             }]);
     function overview(){
@@ -39,6 +40,9 @@
     }
     function paper() {
         window.location.href="#/paper"
+    }
+    function mytopic() {
+        window.location.href="#/mytopic"
     }
 </script>
 
@@ -64,7 +68,7 @@
             </a>
         </li>
         <li>
-            <a>
+            <a onclick="mytopic()">
                 <span class="glyphicon glyphicon-edit"></span>
                 <label>我的帖子</label>
             </a>

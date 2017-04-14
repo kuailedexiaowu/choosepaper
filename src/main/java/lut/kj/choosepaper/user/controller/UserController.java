@@ -48,6 +48,11 @@ public class UserController {
         return userService.findById(id);
     }
 
+    @RequestMapping("/getUserName")
+    public String getUserName(String id){
+        return userService.getUserName(id);
+    }
+
     @RequestMapping("/getUserId")
     public String getUserId(){
         return UserUtils.getUserId();
