@@ -48,19 +48,19 @@ public class TopicController {
     }
 
     @RequestMapping("/listTopicByUserId")
-    PageInfo<Topic> listTopicByUserId(int pageNo, int pageSize){
+    PageInfo<Topic> listTopicByUserId(Integer pageNo, Integer pageSize){
         return topicService.listTopicByUserId(pageNo,pageSize);
     }
     @RequestMapping("/listTopicAll")
-    PageInfo<Topic> listAllTopic(int pageNo, int pageSize){
+    PageInfo<Topic> listAllTopic(Integer pageNo, Integer pageSize){
         return topicService.listAllTopic(pageNo,pageSize);
     }
     @RequestMapping("/listTopicInfoByUserId")
-    PageInfo<TopicInfo> listTopicInfoByUserId(int pageNo, int pageSize){
+    PageInfo<TopicInfo> listTopicInfoByUserId(Integer pageNo, Integer pageSize){
         return topicService.listTopicInfoByUserId(pageNo,pageSize);
     }
     @RequestMapping("/listTopicInfoAll")
-    PageInfo<TopicInfo> listTopicInfoAll(int pageNo, int pageSize){
+    PageInfo<TopicInfo> listTopicInfoAll(Integer pageNo, Integer pageSize){
         return topicService.listTopicInfoAll(pageNo,pageSize);
     }
 }

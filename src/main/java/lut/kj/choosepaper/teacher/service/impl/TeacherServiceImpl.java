@@ -50,7 +50,7 @@ public class TeacherServiceImpl implements TeacherService {
     }
 
     @Override
-    public PageInfo<Teacher> listAll(int pageNo, int pageSize) {
+    public PageInfo<Teacher> listAll(Integer pageNo, Integer pageSize) {
         int totalSize = teacherMapper.selectAll().size();
         RowBounds rowBounds = new RowBounds((pageNo-1)*pageSize, pageSize);
         List<Teacher> teachers = teacherMapper.selectByRowBounds(null, rowBounds);

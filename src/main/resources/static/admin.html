@@ -23,13 +23,14 @@
     }
 </style>
 <script>
+    overview();
     angular.module('console',['ngRoute'])
             .config(['$routeProvider', function($routeProvider){
                 $routeProvider
                         .when('/student',{templateUrl:'adminstudent.html'})
                         .when('/teacher',{templateUrl:'adminteacher.html'})
                         .when('/overview',{templateUrl:'adminoverview.html'})
-                        .otherwise({redirectTo:'/'});
+                        .when('/admintopic',{templateUrl:'admintopic.html'});
             }]);
     function overview(){
         window.location.href="#/overview"
@@ -39,6 +40,9 @@
     }
     function teacher() {
         window.location.href="#/teacher"
+    }
+    function admintopic() {
+        window.location.href="#/admintopic"
     }
 </script>
 <body ng-app='console'>
@@ -60,6 +64,12 @@
             <a onclick="teacher()">
                 <span class="glyphicon glyphicon-user"></span>
                 <label>教师用户</label>
+            </a>
+        </li>
+        <li>
+            <a onclick="admintopic()">
+                <span class="glyphicon glyphicon-globe"></span>
+                <label>信息交流</label>
             </a>
         </li>
     </ul>

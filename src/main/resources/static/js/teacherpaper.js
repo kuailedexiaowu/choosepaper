@@ -98,7 +98,10 @@ function teacherpaper(no,size) {
         error:function (data) {
             var response=data.responseText;
             if("indexPage".indexOf(response)){
-                window.location.href="/index.html"
+                window.location.href="/choosepaper/index.html"
+            }
+            else {
+                alert("网络异常")
             }
         }
     });
@@ -128,7 +131,10 @@ function teacherpaper2(no,size) {
         error:function (data) {
             var response=data.responseText;
             if("indexPage".indexOf(response)){
-                window.location.href="/index.html"
+                window.location.href="/choosepaper/index.html"
+            }
+            else {
+                alert("网络异常")
             }
         }
     });
@@ -153,8 +159,14 @@ function addsub() {
         success: function (data) {
             alert(data.message)
         },
-        error: function () {
-            alert("fail")
+        error: function (data) {
+            var response=data.responseText;
+            if("indexPage".indexOf(response)){
+                window.location.href="/choosepaper/index.html"
+            }
+            else {
+                alert("网络异常")
+            }
         }
     })
 }
@@ -206,8 +218,14 @@ function updatesub() {
         success:function (data) {
             alert(data.message)
         },
-        error:function () {
-            alert("fail")
+        error:function (data) {
+            var response=data.responseText;
+            if("indexPage".indexOf(response)){
+                window.location.href="/choosepaper/index.html"
+            }
+            else {
+                alert("网络异常")
+            }
         }
     })
 }
@@ -236,8 +254,14 @@ function detail(){
                 $("#description3").val(data.description);
                 $("#demand3").val(data.demand);
             },
-            error:function () {
-                alert("fail")
+            error:function (data) {
+                var response=data.responseText;
+                if("indexPage".indexOf(response)){
+                    window.location.href="/choosepaper/index.html"
+                }
+                else {
+                    alert("网络异常")
+                }
             }
         })
     }
@@ -273,8 +297,14 @@ function deletein(){
         success: function (data) {
             alert(data.message)
         },
-        error: function () {
-            alert("fail")
+        error: function (data) {
+            var response=data.responseText;
+            if("indexPage".indexOf(response)){
+                window.location.href="/choosepaper/index.html"
+            }
+            else {
+                alert("网络异常")
+            }
         }
     })
 }

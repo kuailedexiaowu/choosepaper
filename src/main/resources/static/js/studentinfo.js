@@ -22,8 +22,14 @@ function getInfo() {
                     $("#major").val(data.major);
                     $("#gender").val(gendertostring(data.gender))
                 },
-                error:function () {
-                    alert("fail2")
+                error:function (data) {
+                    var response=data.responseText;
+                    if("indexPage".indexOf(response)){
+                        window.location.href="/choosepaper/index.html"
+                    }
+                    else {
+                        alert("网络异常")
+                    }
                 }
             })
         },
@@ -69,8 +75,14 @@ function submit1() {
                 }
             })
         },
-        error:function () {
-            alert("fail")
+        error:function (data) {
+            var response=data.responseText;
+            if("indexPage".indexOf(response)){
+                window.location.href="/choosepaper/index.html"
+            }
+            else {
+                alert("网络异常")
+            }
         }
     });
 

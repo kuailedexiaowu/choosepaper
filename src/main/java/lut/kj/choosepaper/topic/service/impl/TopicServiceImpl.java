@@ -86,7 +86,7 @@ public class TopicServiceImpl implements TopicService {
     }
 
     @Override
-    public PageInfo<Topic> listTopicByUserId(int pageNo, int pageSize) {
+    public PageInfo<Topic> listTopicByUserId(Integer pageNo, Integer pageSize) {
         String userId = UserUtils.getUserId();
         Example example = new Example(Topic.class);
         example.createCriteria().andEqualTo("ownerId",userId);
@@ -108,7 +108,7 @@ public class TopicServiceImpl implements TopicService {
     }
 
     @Override
-    public PageInfo<Topic> listAllTopic(int pageNo, int pageSize) {
+    public PageInfo<Topic> listAllTopic(Integer pageNo, Integer pageSize) {
         int total = topicMapper.selectCount(null);
         RowBounds rowBounds = new RowBounds((pageNo-1)*pageSize, pageSize);
         List<Topic> topics = topicMapper.selectAll();
@@ -128,7 +128,7 @@ public class TopicServiceImpl implements TopicService {
     }
 
     @Override
-    public PageInfo<TopicInfo> listTopicInfoByUserId(int pageNo, int pageSize) {
+    public PageInfo<TopicInfo> listTopicInfoByUserId(Integer pageNo, Integer pageSize) {
         String userId = UserUtils.getUserId();
         Example example = new Example(Topic.class);
         example.createCriteria().andEqualTo("ownerId",userId);
@@ -157,7 +157,7 @@ public class TopicServiceImpl implements TopicService {
     }
 
     @Override
-    public PageInfo<TopicInfo> listTopicInfoAll(int pageNo, int pageSize) {
+    public PageInfo<TopicInfo> listTopicInfoAll(Integer pageNo, Integer pageSize) {
         int total = topicMapper.selectCount(null);
         RowBounds rowBounds = new RowBounds((pageNo-1)*pageSize, pageSize);
         List<Topic> topics = topicMapper.selectAll();

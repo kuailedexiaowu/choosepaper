@@ -51,7 +51,7 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public PageInfo<Student> listAll(int pageNo, int pageSize) {
+    public PageInfo<Student> listAll(Integer pageNo, Integer pageSize) {
         int totalSize = studentMapper.selectAll().size();
         RowBounds rowBounds = new RowBounds((pageNo-1)*pageSize, pageSize);
         List<Student> students = studentMapper.selectByRowBounds(null, rowBounds);

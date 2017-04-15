@@ -71,7 +71,7 @@ public class PaperServiceImpl implements PaperService {
     }
 
     @Override
-    public PageInfo<Paper> listAll(int pageNo, int pageSize) {
+    public PageInfo<Paper> listAll(Integer pageNo, Integer pageSize) {
         int totalSize = paperMapper.selectAll().size();
         RowBounds rowBounds = new RowBounds((pageNo-1)*pageSize, pageSize);
         List<Paper> papers = paperMapper.selectByRowBounds(null, rowBounds);
@@ -90,7 +90,7 @@ public class PaperServiceImpl implements PaperService {
     }
 
     @Override
-    public PageInfo<Paper> listByTeacherId(int pageNo, int pageSize) {
+    public PageInfo<Paper> listByTeacherId(Integer pageNo, Integer pageSize) {
 
         int totalSize = paperMapper.selectAll().size();
         RowBounds rowBounds = new RowBounds((pageNo-1)*pageSize, pageSize);
@@ -113,7 +113,7 @@ public class PaperServiceImpl implements PaperService {
     }
 
     @Override
-    public PageInfo<Paper> listUnchoosed(int pageNo, int pageSize) {
+    public PageInfo<Paper> listUnchoosed(Integer pageNo, Integer pageSize) {
         List<Paper> papers = paperMapper.selectAll();
         Iterator<Paper> iterator=papers.iterator();
         Paper paper;

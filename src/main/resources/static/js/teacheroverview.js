@@ -27,8 +27,14 @@ function getInfo() {
                 }
             })
         },
-        error:function () {
-            alert("fail")
+        error:function (data) {
+            var response=data.responseText;
+            if("indexPage".indexOf(response)){
+                window.location.href="/choosepaper/index.html"
+            }
+            else {
+                alert("网络异常")
+            }
         }
     })
 }

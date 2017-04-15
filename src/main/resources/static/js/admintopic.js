@@ -67,7 +67,7 @@ function tabelupdate(data) {
     )
 }
 
-function topiclist(no,size) {
+function admintopic(no,size) {
     $.post({
         url:"/choosepaper/topic/listTopicAll",
         async:true,
@@ -183,6 +183,48 @@ function detail(){
             }
         })
     }
+}
+
+function deletein(){
+    if($("input:checkbox:checked").length==0) {
+        if($("#delete").val("data-target")!=null&&$("#update").val("data-toggle")!=null) {
+            $("#delete").removeAttr("data-target");
+            $("#delete").removeAttr("data-toggle");
+            alert("您还没有选择");
+        }
+        else
+            alert("您还没有选择");
+        return;
+    }
+
+    var $ids=$("input:checkbox:checked:not(#leader)");
+    var ids=[];
+    for(var i=0;i<$ids.length;i++){
+        var trnum=$($ids[i]).parent().parent().index().toString();
+        trnum++;
+        var id=$("#table").find('tr').eq(trnum).find("td").eq(1).text();
+        ids.push(id);
+    };
+
+    $.post({
+        url: "/choosepaper/topic/delete",
+        async: true,
+        dataType: 'json',
+        data:JSON.stringify(ids),
+        contentType:"application/json",
+        success: function (data) {
+            alert(data.message)
+        },
+        error: function (data) {
+            var response=data.responseText;
+            if("indexPage".indexOf(response)){
+                window.location.href="/choosepaper/index.html"
+            }
+            else {
+                alert("网络异常")
+            }
+        }
+    })
 }
 
 function format(timestamp)

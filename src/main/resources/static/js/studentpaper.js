@@ -92,7 +92,10 @@ function studentpaper(no,size) {
         error:function (data) {
             var response=data.responseText;
             if("indexPage".indexOf(response)){
-                window.location.href="/index.html"
+                window.location.href="/choosepaper/index.html"
+            }
+            else {
+                alert("网络异常")
             }
         }
     });
@@ -122,8 +125,14 @@ function choose(){
             success:function (data) {
                alert(data.message)
             },
-            error:function () {
-                alert("fail")
+            error:function (data) {
+                var response=data.responseText;
+                if("indexPage".indexOf(response)){
+                    window.location.href="/choosepaper/index.html"
+                }
+                else {
+                    alert("网络异常")
+                }
             }
         })
     }
@@ -155,8 +164,14 @@ function detail(){
                 $("#description").val(data.description);
                 $("#demand").val(data.demand);
             },
-            error:function () {
-                alert("fail")
+            error:function (data) {
+                var response=data.responseText;
+                if("indexPage".indexOf(response)){
+                    window.location.href="/choosepaper/index.html"
+                }
+                else {
+                    alert("网络异常")
+                }
             }
         })
     }

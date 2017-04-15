@@ -50,17 +50,17 @@ public class PaperController {
     }
 
     @RequestMapping("/list")
-    public PageInfo<Paper> listAll(int pageNo, int pageSize){
+    public PageInfo<Paper> listAll(Integer pageNo, Integer pageSize){
         return paperService.listAll(pageNo, pageSize);
     }
 
     @RequestMapping("/listByTeacherId")
-    public PageInfo<Paper> listByTeacherId(int pageNo, int pageSize){
+    public PageInfo<Paper> listByTeacherId(Integer pageNo, Integer pageSize){
         return paperService.listByTeacherId(pageNo,pageSize);
     }
 
     @RequestMapping("/listUnchoosed")
-    public  PageInfo<Paper> listUnchoosed(int pageNo, int pageSize){
+    public  PageInfo<Paper> listUnchoosed(Integer pageNo, Integer pageSize){
         return paperService.listUnchoosed(pageNo, pageSize);
     }
 

@@ -12,7 +12,7 @@ public interface TeacherService {
     Message updateTeacher(Teacher teacher);
     Message deleteTeacher(String[] ids);
     Teacher findById(String id);
-    PageInfo<Teacher> listAll(int pageNo, int pageSize);
+    PageInfo<Teacher> listAll(Integer pageNo, Integer pageSize);
     int queryPaperTotalCount(String id);
     int queryPaperChoosedCount(String id);
     int queryPaperUnchoosedCount(String id);

@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>MyTopic</title>
+    <title>admintopic</title>
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/bootstrap.js"></script>
     <script type="text/javascript" src="js/bootstrap-paginator.js"></script>
-    <script type="text/javascript" src="js/mytopic.js"></script>
+    <script type="text/javascript" src="js/admintopic.js"></script>
     <link type="text/css" rel="stylesheet" href="css/bootstrap.css">
 </head>
 <style type="text/css">
@@ -22,7 +22,7 @@
     }
 </style>
 <script>
-    mytopiclist(1,5);
+    admintopic(1,5);
 </script>
 <body>
 <div class="container-fluid">
@@ -31,7 +31,7 @@
         </div>
         <div class="col-md-10 page-header">
             <h3>
-                <strong>我的帖子</strong>
+                <strong>信息交流</strong>
             </h3>
         </div>
         <div class="col-md-1">
@@ -43,9 +43,6 @@
         </div>
         <div class="col-md-10">
             <div class="btn-group btn-group-lg">
-                <button id="add" class="btn btn-success" type="button" onclick="addin()">
-                    发布
-                </button>
                 <button id="detail" class="btn btn-success" type="button" onclick="detail()">
                     详情
                 </button>
@@ -76,43 +73,6 @@
             <ul id="paginator"></ul>
         </div>
         <div class="col-md-1"></div>
-    </div>
-</div>
-
-<div class="modal fade" id="addModel" tabindex="-1" role="dialog" aria-labelledby="addLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close glyphicon glyphicon-remove btn-default" data-dismiss="modal" aria-hidden="true"></button>
-                <h4 class="modal-title " id="addLabel" align="center"><strong>发帖子</strong></h4>
-            </div>
-            <div class="modal-body">
-                <form class="form-horizontal" role="form" >
-                    <div class="form-group">
-                        <label  class="col-sm-2 control-label col-sm-offset-1">
-                            标题
-                        </label>
-                        <div class="col-sm-6">
-                            <input class="form-control" id="title"  type="text"/>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label  class="col-sm-2 control-label col-sm-offset-1">
-                            内容
-                        </label>
-                        <div class="col-sm-6">
-                            <textarea class="form-control" id="context" rows="15"></textarea>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-sm-offset-3 col-sm-5">
-                            <button type="button" class="btn btn-success"data-dismiss="modal" onclick="addsub()">提交</button>
-                            <button type="button" class="btn btn-info" data-dismiss="modal">关闭</button>
-                        </div>
-                    </div>
-                </form>
-            </div><!-- /.modal-content -->
-        </div><!-- /.modal -->
     </div>
 </div>
 
@@ -188,6 +148,5 @@
         </div><!-- /.modal -->
     </div>
 </div>
-
 </body>
 </html>

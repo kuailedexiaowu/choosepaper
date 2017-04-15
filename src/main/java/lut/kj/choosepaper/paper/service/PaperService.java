@@ -14,9 +14,9 @@ public interface PaperService {
      Paper selectById(String id);
      Message deletePaper(String[] ids);
     Message choosePaper(String id);
-    PageInfo<Paper> listAll(int pageNo, int pageSize);
-    PageInfo<Paper> listByTeacherId(int pageNo, int pageSize);
-    PageInfo<Paper> listUnchoosed(int pageNo, int pageSize);
+    PageInfo<Paper> listAll(Integer pageNo, Integer pageSize);
+    PageInfo<Paper> listByTeacherId(Integer pageNo, Integer pageSize);
+    PageInfo<Paper> listUnchoosed(Integer pageNo, Integer pageSize);
     PaperDetailVo detail(String id);
 
 

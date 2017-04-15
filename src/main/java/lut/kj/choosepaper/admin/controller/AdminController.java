@@ -75,7 +75,7 @@ public class AdminController {
     }
 
     @RequestMapping("/listStudent")
-    public PageInfo<StudentUser> listStudent(int pageNo, int pageSize){
+    public PageInfo<StudentUser> listStudent(Integer pageNo, Integer pageSize){
         return adminService.listStudent(pageNo, pageSize);
     }
 
@@ -115,7 +115,7 @@ public class AdminController {
     }
 
     @RequestMapping("/listTeacher")
-    public PageInfo<TeacherUser> listTeacher(int pageNo, int pageSize){
+    public PageInfo<TeacherUser> listTeacher(Integer pageNo, Integer pageSize){
         return adminService.listTeacher(pageNo, pageSize);
     }
 

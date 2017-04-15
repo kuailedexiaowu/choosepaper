@@ -29,7 +29,7 @@ public class AdminServiceImpl implements AdminService {
     @Autowired
     TeacherMapper teacherMapper;
     @Override
-    public PageInfo<StudentUser> listStudent(int pageNo, int pageSize) {
+    public PageInfo<StudentUser> listStudent(Integer pageNo, Integer pageSize) {
         int totalSize = studentMapper.selectAll().size();
         RowBounds rowBounds = new RowBounds((pageNo-1)*pageSize, pageSize);
         List<Student> students = studentMapper.selectByRowBounds(null, rowBounds);
@@ -59,7 +59,7 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-    public PageInfo<TeacherUser> listTeacher(int pageNo, int pageSize) {
+    public PageInfo<TeacherUser> listTeacher(Integer pageNo, Integer pageSize) {
         int totalSize = teacherMapper.selectAll().size();
         RowBounds rowBounds = new RowBounds((pageNo-1)*pageSize, pageSize);
         List<Teacher> teachers = teacherMapper.selectByRowBounds(null, rowBounds);

@@ -67,7 +67,7 @@ function tabelupdate(data) {
     )
 }
 
-function mytopic(no,size) {
+function mytopiclist(no,size) {
     $.post({
         url:"/choosepaper/topic/listTopicByUserId",
         async:true,
@@ -91,7 +91,10 @@ function mytopic(no,size) {
         error:function (data) {
             var response=data.responseText;
             if("indexPage".indexOf(response)){
-                window.location.href="/index.html"
+                window.location.href="/choosepaper/index.html"
+            }
+            else {
+                alert("网络异常")
             }
         }
     });
@@ -115,8 +118,14 @@ function addsub() {
         success: function (data) {
             alert(data.message)
         },
-        error: function () {
-            alert("fail")
+        error: function (data) {
+            var response=data.responseText;
+            if("indexPage".indexOf(response)){
+                window.location.href="/choosepaper/index.html"
+            }
+            else {
+                alert("网络异常")
+            }
         }
     })
 }
@@ -236,8 +245,14 @@ function deletein(){
         success: function (data) {
             alert(data.message)
         },
-        error: function () {
-            alert("fail")
+        error: function (data) {
+            var response=data.responseText;
+            if("indexPage".indexOf(response)){
+                window.location.href="/choosepaper/index.html"
+            }
+            else {
+                alert("网络异常")
+            }
         }
     })
 }
@@ -255,8 +270,14 @@ function commenting() {
         success: function (data) {
             alert(data.message)
         },
-        error: function () {
-            alert("fail")
+        error: function (data) {
+            var response=data.responseText;
+            if("indexPage".indexOf(response)){
+                window.location.href="/choosepaper/index.html"
+            }
+            else {
+                alert("网络异常")
+            }
         }
     })
 }

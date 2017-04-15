@@ -14,8 +14,8 @@ public interface TopicService {
     Message deleteTopic(String[] ids);
     Topic getTopicById(String id);
     TopicInfo selectById(String id);
-    PageInfo<Topic> listTopicByUserId(int pageNo, int pageSize);
-    PageInfo<Topic> listAllTopic(int pageNo, int pageSize);
-    PageInfo<TopicInfo> listTopicInfoByUserId(int pageNo, int pageSize);
-    PageInfo<TopicInfo> listTopicInfoAll(int pageNo, int pageSize);
+    PageInfo<Topic> listTopicByUserId(Integer pageNo, Integer pageSize);
+    PageInfo<Topic> listAllTopic(Integer pageNo, Integer pageSize);
+    PageInfo<TopicInfo> listTopicInfoByUserId(Integer pageNo, Integer pageSize);
+    PageInfo<TopicInfo> listTopicInfoAll(Integer pageNo, Integer pageSize);
 }

@@ -12,7 +12,7 @@ public interface StudentService {
     Message updateStudent(Student student);
     Message deleteStudent(String[] ids);
     Student findById(String id);
-    PageInfo<Student> listAll(int pageNo, int pageSize);
+    PageInfo<Student> listAll(Integer pageNo, Integer pageSize);
     int queryPaperTotalCount();
     int queryPaperUnchoosedCount();
     int queryPaperChoosedCount();
