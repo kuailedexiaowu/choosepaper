@@ -29,6 +29,7 @@ public class TeacherInterceptor implements HandlerInterceptor{
         User user = userService.findById(userId);
         Teacher teacher = teacherService.findById(userId);
         if(null!=user){
+            System.out.println("++++++++教师拦截器++++++");
             if("13240206".equals(userId)){
                 System.out.println("当前管理员用户为：【"+userId+"】");
                 return true;

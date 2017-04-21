@@ -18,6 +18,7 @@ public class AdminInterceptor implements HandlerInterceptor{
         HttpSession httpSession=httpServletRequest.getSession();
         String userId=(String) httpSession.getAttribute("userId");
         if("13240206".equals(userId)){
+            System.out.println("++++++++管理员拦截器++++++");
             System.out.println("当前管理员用户为：【"+userId+"】");
             return true;
         }

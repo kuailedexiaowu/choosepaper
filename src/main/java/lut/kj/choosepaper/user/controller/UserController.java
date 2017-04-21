@@ -65,6 +65,11 @@ public class UserController {
         user.setUserName(userName);
         return userService.login(user);
     }
+
+    @RequestMapping("/logout")
+    public Message logout(){
+        return userService.logout();
+    }
 }
 
 

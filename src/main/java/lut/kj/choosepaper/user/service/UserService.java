@@ -13,4 +13,5 @@ public interface UserService {
     User findById(String id);
     String getUserName(String id);
     Message login(User user);
+    Message logout();
 }

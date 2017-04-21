@@ -23,7 +23,21 @@
     }
 </style>
 <script>
-    overview();
+
+    $(function () {
+        switch (sessionStorage.getItem("src")){
+            case ("one") :{
+                overview();break;}
+            case ("two") :{
+                student();break;}
+            case ("three") :{
+                teacher();break;}
+            case ("four") :{
+                admintopic();break;}
+            default :{
+                overview();}
+        }
+    })
     angular.module('console',['ngRoute'])
             .config(['$routeProvider', function($routeProvider){
                 $routeProvider
@@ -33,16 +47,33 @@
                         .when('/admintopic',{templateUrl:'admintopic.html'});
             }]);
     function overview(){
-        window.location.href="#/overview"
+        window.location.href="#/overview";
+        sessionStorage.setItem("src","one");
     }
     function student() {
-        window.location.href="#/student"
+        sessionStorage.setItem("src","two");
+        window.location.href="#/student";
+
     }
     function teacher() {
-        window.location.href="#/teacher"
+        window.location.href="#/teacher";
+        sessionStorage.setItem("src","three");
     }
     function admintopic() {
-        window.location.href="#/admintopic"
+        window.location.href="#/admintopic";
+        sessionStorage.setItem("src","four");
+    }
+    function logout() {
+        $.post({
+            url: "/choosepaper/user/logout",
+            async: true,
+            dataType: 'json',
+            contentType: "application/json",
+            success: function (data) {
+                alert(data.message);
+            }
+        });
+        window.location.href="index.html";
     }
 </script>
 <body ng-app='console'>
@@ -70,6 +101,12 @@
             <a onclick="admintopic()">
                 <span class="glyphicon glyphicon-globe"></span>
                 <label>信息交流</label>
+            </a>
+        </li>
+        <li>
+            <a onclick="logout()">
+                <span class="glyphicon glyphicon-log-out"></span>
+                <label>退出系统</label>
             </a>
         </li>
     </ul>

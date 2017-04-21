@@ -116,6 +116,14 @@ public class UserServiceImpl implements UserService {
         return new Message("用户不存在");
     }
 
+    @Override
+    public Message logout() {
+        HttpSession httpSession = UserUtils.getSession();
+        httpSession.removeAttribute("userId");
+        httpSession.removeAttribute("role");
+        return new Message("退出成功");
+    }
+
     private String encode(String password) {//对密码进行加密
         byte[] bytes=null;
         MessageDigest messageDigest=null;

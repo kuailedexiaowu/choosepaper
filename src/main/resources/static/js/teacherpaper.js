@@ -244,7 +244,7 @@ function detail(){
         var trnum=$(":input:checkbox:checked").parent().parent().index();
         var trele=$("#table").find('tr').eq(trnum+1).find("td").eq(1).text();
         $.post({
-            url:"/choosepaper/paper/findByTeacherId",
+            url:"/choosepaper/paper/detail",
             async:true,
             dataType:'json',
             data:{id:trele},

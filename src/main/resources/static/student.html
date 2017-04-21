@@ -23,7 +23,23 @@
     }
 </style>
 <script>
-    overview();
+    $(function () {
+        switch (sessionStorage.getItem("src")){
+            case ("one") :{
+                overview();break;}
+            case ("two") :{
+                info();break;}
+            case ("three") :{
+                paper();break;}
+            case ("four") :{
+                mytopic();break;}
+            case ("five") :{
+                topic();break;
+            }
+            default :{
+                overview();}
+        }
+    })
     angular.module('console',['ngRoute'])
             .config(['$routeProvider', function($routeProvider){
                 $routeProvider
@@ -34,19 +50,36 @@
                         .when('/topic',{templateUrl:'topic.html'});
             }]);
     function overview(){
-        window.location.href="#/overview"
+        window.location.href="#/overview";
+        sessionStorage.setItem("src","one");
     }
     function info() {
-        window.location.href="#/info"
+        window.location.href="#/info";
+        sessionStorage.setItem("src","two");
     }
     function paper() {
-        window.location.href="#/paper"
+        window.location.href="#/paper";
+        sessionStorage.setItem("src","three");
     }
     function mytopic() {
-        window.location.href="#/mytopic"
+        window.location.href="#/mytopic";
+        sessionStorage.setItem("src","four");
     }
     function topic() {
-        window.location.href="#/topic"
+        window.location.href="#/topic";
+        sessionStorage.setItem("src","five");
+    }
+    function logout() {
+        $.post({
+            url: "/choosepaper/user/logout",
+            async: true,
+            dataType: 'json',
+            contentType: "application/json",
+            success: function (data) {
+                alert(data.message);
+            }
+        });
+        window.location.href="index.html";
     }
 </script>
 <body ng-app='console'>
@@ -61,7 +94,7 @@
         <li>
             <a onclick="paper()">
                 <span class="glyphicon glyphicon-list-alt"></span>
-                <label>我的论文</label>
+                <label>选择论文</label>
             </a>
         </li>
         <li>
@@ -80,6 +113,12 @@
             <a onclick="topic()">
                 <span class="glyphicon glyphicon-globe"></span>
                 <label>信息交流</label>
+            </a>
+        </li>
+        <li>
+            <a onclick="logout()">
+                <span class="glyphicon glyphicon-log-out"></span>
+                <label>退出系统</label>
             </a>
         </li>
     </ul>

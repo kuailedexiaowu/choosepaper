@@ -24,6 +24,7 @@ public class TopicAndPaperInterceptor implements HandlerInterceptor {
         String userId=(String) httpSession.getAttribute("userId");
         User user = userService.findById(userId);
         if(null != user){
+            System.out.println("++++++++论文和帖子拦截器++++++");
             if("13240206".equals(userId)){
                 System.out.println("当前管理员用户为：【"+userId+"】");
                 return true;

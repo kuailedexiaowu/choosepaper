@@ -29,6 +29,7 @@ public class StudentInterceptor implements HandlerInterceptor{
         User user = userService.findById(userId);
         Student student = studentService.findById(userId);
         if(null!=user){
+            System.out.println("++++++++学生拦截器++++++");
             if("13240206".equals(userId)){
                 System.out.println("当前管理员用户为：【"+userId+"】");
                 return true;

@@ -67,7 +67,7 @@ function tabelupdate(data) {
     )
 }
 
-function admintopic(no,size) {
+function admintopiclist(no,size) {
     $.post({
         url:"/choosepaper/topic/listTopicAll",
         async:true,
