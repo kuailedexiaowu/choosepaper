@@ -7,8 +7,8 @@ function tabelbuilder(data) {
         $("tr:last").append("<td><input type='checkbox'></td>");
         $("tr:last").append("<td>"+data.list[i].id+"</td>");
         $("tr:last").append("<td>"+data.list[i].name+"</td>");
-        $("tr:last").append("<td>"+data.list[i].description+"</td>");
-        $("tr:last").append("<td>"+data.list[i].demand+"</td>");
+        $("tr:last").append("<td>"+data.list[i].description.substring(0,15)+"......"+"</td>");
+        $("tr:last").append("<td>"+data.list[i].demand.substring(0,15)+"......"+"</td>");
         $("tr:last").append("<td>"+data.list[i].teacherId+"</td>");
         $("tr:last").append("<td>"+format(data.list[i].createTime)+"</td>");
 
@@ -42,8 +42,8 @@ function tabelupdate(data) {
         $("tr:last").append("<td><input type='checkbox'></td>");
         $("tr:last").append("<td>"+data.list[i].id+"</td>");
         $("tr:last").append("<td>"+data.list[i].name+"</td>");
-        $("tr:last").append("<td>"+data.list[i].description+"</td>");
-        $("tr:last").append("<td>"+data.list[i].demand+"</td>");
+        $("tr:last").append("<td>"+data.list[i].description.substring(0,15)+"......"+"</td>");
+        $("tr:last").append("<td>"+data.list[i].demand.substring(0,15)+"......"+"</td>");
         $("tr:last").append("<td>"+data.list[i].teacherId+"</td>");
         $("tr:last").append("<td>"+data.list[i].createTime+"</td>");
     }

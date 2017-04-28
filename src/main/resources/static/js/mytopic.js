@@ -10,7 +10,7 @@ function tabelbuilder(data) {
         $("tr:last").append("<td><input type='checkbox'></td>");
         $("tr:last").append("<td>"+data.list[i].id+"</td>");
         $("tr:last").append("<td>"+data.list[i].title+"</td>");
-        $("tr:last").append("<td>"+data.list[i].context+"</td>");
+        $("tr:last").append("<td>"+data.list[i].context.substring(0,20)+"......"+"</td>");
         $("tr:last").append("<td>"+format(data.list[i].createTime)+"</td>");
 
     }
@@ -184,6 +184,7 @@ function detail(){
                                 contentType:"application/json",
                                 success:function (data) {
                                     alert("success")
+                                    updatecommentandreplay();
                                 },
                                 error:function () {
                                     alert("网络问题,回复失败")
@@ -213,6 +214,64 @@ function detail(){
             }
         })
     }
+}
+
+function updatecommentandreplay() {
+    var trnum=$(":input:checkbox:checked").parent().parent().index();
+    var trele=$("#table").find('tr').eq(trnum+1).find("td").eq(1).text();
+    $.post({
+        url:"/choosepaper/topic/detail",
+        async:true,
+        dataType:'json',
+        data:{id:trele},
+        success:function (data) {
+            $("#commented").empty();
+            for(var i=0;i<data.commentInfos.length;i++) {
+                var element = $("<label></label>").text(format(data.commentInfos[i].createTime)+data.commentInfos[i].speakName+":"
+                    +data.commentInfos[i].context).attr({"class":"col-sm-10 col-sm-offset-2 commentId","id":data.commentInfos[i].id});
+                var element2 = $( "<button>回复</button>").attr({"class":"col-sm-1 col-sm-offset-2 replay"})
+                    .css({"width":"65px","height":"25px"});
+                $("#commented").append(element).append(element2).after($("<br>"));
+
+                for(var j=0;j<data.commentInfos[i].replays.length;j++){
+                    var ele3=$("<label></label>").text(format(data.commentInfos[i].replays[j].createTime)+data.commentInfos[i].replays[j].speakName+":"
+                        +data.commentInfos[i].replays[j].context).attr({"class":"col-sm-10 col-sm-offset-3"});
+                    var ele4= $( "<button>回复</button>").attr({"class":"col-sm-1 col-sm-offset-3 replay"})
+                        .css({"width":"65px","height":"25px"});
+                    element2.after(ele4).after(ele3);
+                }
+            }
+            $(".replay").click(function () {
+                $(".replay").siblings(".send").remove();
+                var element3 = $(" <textarea></textarea>").attr({"class":"col-sm-5 send","rows":"1"})
+                var element4 = $("<button>发送</button>").attr({"class":"col-sm-5 send"}) .css({"width":"65px","height":"25px"});
+                $(this).after(element4).after(element3);
+                $(":button.send").click(
+                    function () {
+                        var replayAddInvo={context:$(".send:first").val(),commentId:$(this).prevAll().filter(".commentId").first().attr("id")};
+                        $.post({
+                            url:"/choosepaper/replay/add",
+                            async:true,
+                            dataType:'text',
+                            data:JSON.stringify(replayAddInvo),
+                            contentType:"application/json",
+                            success:function (data) {
+                                alert("success")
+                                updatecommentandreplay();
+                            },
+                            error:function () {
+                                alert("网络问题,回复失败")
+                            }
+
+                        })
+                    }
+                )
+            })
+        },
+        error:function () {
+            alert("网络异常，更新对话失败")
+        }
+    })
 }
 
 function deletein(){
@@ -269,6 +328,7 @@ function commenting() {
         contentType:"application/json",
         success: function (data) {
             alert(data.message)
+            updatecommentandreplay();
         },
         error: function (data) {
             var response=data.responseText;

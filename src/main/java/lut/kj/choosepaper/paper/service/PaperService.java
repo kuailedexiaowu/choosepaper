@@ -12,6 +12,7 @@ public interface PaperService {
      Message addPaper(Paper paper);
      Message updatePaper(Paper paper);
      Paper selectById(String id);
+     Paper getMyPaper(String id);
      Message deletePaper(String[] ids);
     Message choosePaper(String id);
     PageInfo<Paper> listAll(Integer pageNo, Integer pageSize);

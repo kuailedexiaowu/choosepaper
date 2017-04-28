@@ -7,9 +7,9 @@ function tabelbuilder(data) {
         $("tr:last").append("<td><input type='checkbox'></td>");
         $("tr:last").append("<td>"+data.list[i].id+"</td>");
         $("tr:last").append("<td>"+data.list[i].name+"</td>");
-        $("tr:last").append("<td>"+data.list[i].description+"</td>");
-        $("tr:last").append("<td>"+data.list[i].demand+"</td>");
-        if(data.list[i].student_id==null){
+        $("tr:last").append("<td>"+data.list[i].description.substring(0,15)+"......"+"</td>");
+        $("tr:last").append("<td>"+data.list[i].demand.substring(0,15)+"......"+"</td>");
+        if(data.list[i].studentId==null){
             $("tr:last").append("<td>暂未选择</td>");}
         else{
             $("tr:last").append("<td>已被选择</td>");}
@@ -45,8 +45,8 @@ function tabelupdate(data) {
         $("tr:last").append("<td><input type='checkbox'></td>");
         $("tr:last").append("<td>"+data.list[i].id+"</td>");
         $("tr:last").append("<td>"+data.list[i].name+"</td>");
-        $("tr:last").append("<td>"+data.list[i].description+"</td>");
-        $("tr:last").append("<td>"+data.list[i].demand+"</td>");
+        $("tr:last").append("<td>"+data.list[i].description.substring(0,15)+"......"+"</td>");
+        $("tr:last").append("<td>"+data.list[i].demand.substring(0,15)+"......"+"</td>");
         if(data.list[i].student_id!=null){
             $("tr:last").append("<td>暂未选择</td>");}
         else{
@@ -253,6 +253,11 @@ function detail(){
                 $("#create_time3").val(format(data.createTime));
                 $("#description3").val(data.description);
                 $("#demand3").val(data.demand);
+                if(data.student != null){
+                 $("#sid").val(data.student.id);
+                 $("#sname").val(data.student.name);
+                 $("#smajor").val(data.student.major);
+                }
             },
             error:function (data) {
                 var response=data.responseText;

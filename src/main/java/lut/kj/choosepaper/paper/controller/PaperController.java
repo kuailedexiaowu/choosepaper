@@ -49,6 +49,19 @@ public class PaperController {
         return paperService.choosePaper(id);
     }
 
+    @RequestMapping("/getMyPaper")
+    public PaperDetailVo getMyPaper(String id){
+       Paper paper = paperService.getMyPaper(id);
+        if(null != paper){
+           return paperService.detail(paper.getId());
+        }
+        else{
+            PaperDetailVo paperDetailVo = new PaperDetailVo();
+            paperDetailVo.setId("-1");
+            return paperDetailVo;
+        }
+    }
+
     @RequestMapping("/list")
     public PageInfo<Paper> listAll(Integer pageNo, Integer pageSize){
         return paperService.listAll(pageNo, pageSize);

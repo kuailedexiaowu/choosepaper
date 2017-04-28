@@ -16,6 +16,7 @@ import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import tk.mybatis.mapper.entity.Example;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -54,6 +55,21 @@ public class PaperServiceImpl implements PaperService {
     }
 
     @Override
+    public Paper getMyPaper(String id) {
+        Example example = new Example(Paper.class);
+        example.createCriteria().andEqualTo("studentId",UserUtils.getUserId());
+        int count = paperMapper.selectByExample(example).size();
+        Paper paper = null;
+        if(count > 0){
+            paper = paperMapper.selectByExample(example).get(0);
+        }
+        if(null != paper)
+            return paper;
+        else
+            return null;
+    }
+
+    @Override
     public Message deletePaper(String[] ids) {
         for(String id:ids){
         paperMapper.deleteByPrimaryKey(id);}
@@ -62,6 +78,12 @@ public class PaperServiceImpl implements PaperService {
 
     @Override
     public Message choosePaper(String id) {
+        Example example = new Example(Paper.class);
+        example.createCriteria().andEqualTo("studentId",UserUtils.getUserId());
+        int count = paperMapper.selectCountByExample(example);
+        if(count > 0){
+            return new Message("你已经选择过了，不能再选！");
+        }
         Paper paper=new Paper();
         paper.setId(id);
         paper=paperMapper.selectByPrimaryKey(paper);
