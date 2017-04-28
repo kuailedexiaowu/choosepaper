@@ -106,7 +106,13 @@ function detail(){
         return ;
     }
     else if($("input:checkbox:checked:not(#leader)").length>1) {
-        alert("目前版本只支持单一查看");
+        if($("#detail").val("data-target")!=null&&$("#detail").val("data-toggle")!=null) {
+            $("#detail").removeAttr("data-target");
+            $("#detail").removeAttr("data-toggle");
+            alert("目前版本只支持单一查看");
+        }
+        else
+            alert("目前版本只支持单一查看");
         return ;
     }
     else{
