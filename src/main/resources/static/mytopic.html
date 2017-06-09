@@ -8,6 +8,8 @@
     <script type="text/javascript" src="js/bootstrap-paginator.js"></script>
     <script type="text/javascript" src="js/mytopic.js"></script>
     <link type="text/css" rel="stylesheet" href="css/bootstrap.css">
+    <link type="text/css" rel="stylesheet" href="css/bootstrapValidator.min.css">
+    <script type="text/javascript" src="js/bootstrapValidator.min.js"></script>
 </head>
 <style type="text/css">
     table{
@@ -87,13 +89,13 @@
                 <h4 class="modal-title " id="addLabel" align="center"><strong>发帖子</strong></h4>
             </div>
             <div class="modal-body">
-                <form class="form-horizontal" role="form" >
+                <form class="form-horizontal" role="form" id="addForm">
                     <div class="form-group">
                         <label  class="col-sm-2 control-label col-sm-offset-1">
                             标题
                         </label>
                         <div class="col-sm-6">
-                            <input class="form-control" id="title"  type="text"/>
+                            <input class="form-control" id="title" name="title" type="text"/>
                         </div>
                     </div>
                     <div class="form-group">
@@ -101,12 +103,12 @@
                             内容
                         </label>
                         <div class="col-sm-6">
-                            <textarea class="form-control" id="context" rows="15"></textarea>
+                            <textarea class="form-control" id="context" name="context" rows="15"></textarea>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-sm-offset-3 col-sm-5">
-                            <button type="button" class="btn btn-success"data-dismiss="modal" onclick="addsub()">提交</button>
+                            <button type="button" class="btn btn-success"data-dismiss="modal" id="addtopic" onclick="addsub()">提交</button>
                             <button type="button" class="btn btn-info" data-dismiss="modal">关闭</button>
                         </div>
                     </div>

@@ -83,7 +83,7 @@ function studentpaper(no,size) {
                 bootstrapMajorVersion:3,
                 onPageClicked:function (event, originalEvent, type, page) {
                     $("tbody").children().remove();
-                    teacherpaper2(page,2)
+                    tabelupdate(page,5)
                 }
             }
             $('#paginator').bootstrapPaginator(op);

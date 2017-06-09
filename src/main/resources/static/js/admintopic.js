@@ -220,6 +220,7 @@ function deletein(){
         contentType:"application/json",
         success: function (data) {
             alert(data.message)
+            location.reload();
         },
         error: function (data) {
             var response=data.responseText;

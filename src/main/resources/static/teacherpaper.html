@@ -8,6 +8,8 @@
     <script type="text/javascript" src="js/bootstrap-paginator.js"></script>
     <script type="text/javascript" src="js/teacherpaper.js"></script>
     <link type="text/css" rel="stylesheet" href="css/bootstrap.css">
+    <link type="text/css" rel="stylesheet" href="css/bootstrapValidator.min.css">
+    <script type="text/javascript" src="js/bootstrapValidator.min.js"></script>
 </head>
 <style type="text/css">
     table{
@@ -94,13 +96,13 @@
                 <h4 class="modal-title " id="addLabel" align="center"><strong>发布新论文</strong></h4>
             </div>
             <div class="modal-body">
-                <form class="form-horizontal" role="form" >
+                <form class="form-horizontal" role="form" id="addForm" >
                     <div class="form-group">
                         <label  class="col-sm-2 control-label col-sm-offset-1">
                             名称
                         </label>
                         <div class="col-sm-7">
-                            <input class="form-control" id="name"  type="text"/>
+                            <input class="form-control" id="name" name="name" type="text"/>
                         </div>
                      </div>
                     <div class="form-group">
@@ -108,7 +110,7 @@
                             描述
                         </label>
                         <div class="col-sm-7">
-                            <textarea class="form-control" id="description" rows="6"></textarea>
+                            <textarea class="form-control" id="description" name="description" rows="6"></textarea>
                         </div>
                     </div>
                     <div class="form-group">
@@ -116,12 +118,12 @@
                             要求
                         </label>
                         <div class="col-sm-7">
-                            <textarea class="form-control" id="demand" rows="8"></textarea>
+                            <textarea class="form-control" id="demand" name="demand" rows="8"></textarea>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-sm-offset-3 col-sm-5">
-                            <button type="button" class="btn btn-success"data-dismiss="modal" onclick="addsub()">提交</button>
+                            <button type="button" class="btn btn-success"data-dismiss="modal" id="addtopic" onclick="addsub()">提交</button>
                             <button type="button" class="btn btn-info" data-dismiss="modal">关闭</button>
                         </div>
                     </div>
@@ -139,7 +141,7 @@
                 <h4 class="modal-title " id="updateLabel" align="center"><strong>更新论文</strong></h4>
             </div>
             <div class="modal-body">
-                <form class="form-horizontal" role="form" >
+                <form class="form-horizontal" role="form" id="updateForm">
                     <div class="form-group">
                         <label  class="col-sm-2 control-label col-sm-offset-1 ">
                             序号
@@ -153,7 +155,7 @@
                             名称
                         </label>
                         <div class="col-sm-7">
-                            <input class="form-control" id="name2"  type="text"/>
+                            <input class="form-control" id="name2" name="name2"  type="text"/>
                         </div>
                     </div>
                     <div class="form-group">
@@ -161,7 +163,7 @@
                             描述
                         </label>
                         <div class="col-sm-7">
-                            <textarea class="form-control" id="description2" rows="6"></textarea>
+                            <textarea class="form-control" id="description2" name="description2" rows="6"></textarea>
                         </div>
                     </div>
                     <div class="form-group">
@@ -169,12 +171,12 @@
                             要求
                         </label>
                         <div class="col-sm-7">
-                            <textarea class="form-control" id="demand2" rows="8"></textarea>
+                            <textarea class="form-control" id="demand2" name="demand2" rows="8"></textarea>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-sm-offset-3 col-sm-5">
-                            <button type="button" class="btn btn-success"data-dismiss="modal" onclick="updatesub()">提交</button>
+                            <button type="button" class="btn btn-success"data-dismiss="modal"id="updatetopic" onclick="updatesub()">提交</button>
                             <button type="button" class="btn btn-info" data-dismiss="modal">关闭</button>
                         </div>
                     </div>

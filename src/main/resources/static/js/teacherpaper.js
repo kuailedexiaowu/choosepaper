@@ -7,8 +7,8 @@ function tabelbuilder(data) {
         $("tr:last").append("<td><input type='checkbox'></td>");
         $("tr:last").append("<td>"+data.list[i].id+"</td>");
         $("tr:last").append("<td>"+data.list[i].name+"</td>");
-        $("tr:last").append("<td>"+data.list[i].description.substring(0,15)+"......"+"</td>");
-        $("tr:last").append("<td>"+data.list[i].demand.substring(0,15)+"......"+"</td>");
+        $("tr:last").append("<td>"+data.list[i].description.substring(0,12)+"......"+"</td>");
+        $("tr:last").append("<td>"+data.list[i].demand.substring(0,12)+"......"+"</td>");
         if(data.list[i].studentId==null){
             $("tr:last").append("<td>暂未选择</td>");}
         else{
@@ -45,8 +45,8 @@ function tabelupdate(data) {
         $("tr:last").append("<td><input type='checkbox'></td>");
         $("tr:last").append("<td>"+data.list[i].id+"</td>");
         $("tr:last").append("<td>"+data.list[i].name+"</td>");
-        $("tr:last").append("<td>"+data.list[i].description.substring(0,15)+"......"+"</td>");
-        $("tr:last").append("<td>"+data.list[i].demand.substring(0,15)+"......"+"</td>");
+        $("tr:last").append("<td>"+data.list[i].description.substring(0,12)+"......"+"</td>");
+        $("tr:last").append("<td>"+data.list[i].demand.substring(0,12)+"......"+"</td>");
         if(data.list[i].student_id!=null){
             $("tr:last").append("<td>暂未选择</td>");}
         else{
@@ -89,7 +89,7 @@ function teacherpaper(no,size) {
                 bootstrapMajorVersion:3,
                 onPageClicked:function (event, originalEvent, type, page) {
                     $("tbody").children().remove();
-                    teacherpaper2(page,2)
+                    teacherpaper2(page,5)
                 }
             }
             $('#paginator').bootstrapPaginator(op);
@@ -122,7 +122,7 @@ function teacherpaper2(no,size) {
                 bootstrapMajorVersion:3,
                 onPageClicked:function (event, originalEvent, type, page) {
                     $("tbody").children().remove();
-                    teacherpaper2(page,2)
+                    teacherpaper2(page,5)
                 }
             }
             $('#paginator').bootstrapPaginator(op);
@@ -141,8 +141,77 @@ function teacherpaper2(no,size) {
 }
 
 function addin() {
+    addcheck();
     $("#add").attr("data-target","#addModel").attr("data-toggle","modal");
+    $("#addtopic").attr({"disabled":"disabled"});
 }
+
+function addcheck() {
+    $('#addForm').bootstrapValidator({
+        message: 'This value is not valid',
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            name: {
+                message: '名称验证失败',
+                validators: {
+                    notEmpty: {
+                        message: '名称不能为空'
+                    }
+                }
+            },
+            description: {
+                message: '描述验证失败',
+                validators: {
+                    notEmpty: {
+                        message: '描述不能为空'
+                    }
+                }
+            },
+            demand: {
+                message: '要求验证失败',
+                validators: {
+                    notEmpty: {
+                        message: '要求不能为空'
+                    },
+                    /* regexp: {
+                     regexp: /^1[3|5|8]{1}[0-9]{9}$/,
+                     message: '请输入正确的手机号码'
+                     }*/
+                }
+            },
+
+        },
+    });
+};
+
+$('#addModel').on('hidden.bs.modal', function() {
+    $("#addForm").data('bootstrapValidator').destroy();
+    $('#addForm').data('bootstrapValidator', null);
+    $("#addForm input").val("");
+    $("#addForm textarea").val("");
+});
+
+$("#addForm input").keyup(function () {
+    if($("#addForm").data('bootstrapValidator').isValid()) {
+        $("#addtopic").removeAttr("disabled");
+    }
+    else{
+        $("#addtopic").attr({"disabled":"disabled"});
+    }
+})
+
+$("#addForm textarea").keyup(function () {
+    if($("#addForm").data('bootstrapValidator').isValid()) {
+        $("#addtopic").removeAttr("disabled");
+    }
+    else{
+        $("#addtopic").attr({"disabled":"disabled"});
+    }
+})
 
 function addsub() {
     var addPaperIn = {
@@ -158,6 +227,7 @@ function addsub() {
         contentType: "application/json",
         success: function (data) {
             alert(data.message)
+            location.reload();
         },
         error: function (data) {
             var response=data.responseText;
@@ -197,15 +267,92 @@ function update() {
         $("#update").attr("data-target","#updateModel").attr("data-toggle","modal");
         var trnum=$(":input:checkbox:checked").parent().parent().index();
         var trele=$("#tpaper").find('tr').eq(trnum+1).find("td").eq(1).text();
-        $("#id2").val(trele.trim());
-        trele=$("#tpaper").find('tr').eq(trnum+1).find("td").eq(2).text();
-        $("#name2").val(trele.trim());
-        trele=$("#tpaper").find('tr').eq(trnum+1).find("td").eq(3).text();
-        $("#description2").val(trele.trim());
-        trele=$("#tpaper").find('tr').eq(trnum+1).find("td").eq(4).text();
-        $("#demand2").val(trele.trim());
+        $.post({
+            url:"/choosepaper/paper/detail",
+            async:true,
+            dataType:'json',
+            data:{id:trele},
+            success:function (data) {
+                $("#name2").val(data.name);
+                $("#id2").val(data.id);
+                $("#description2").val(data.description);
+                $("#demand2").val(data.demand);
+
+            },
+            error:function (data) {
+                var response=data.responseText;
+                if("indexPage".indexOf(response)){
+                    window.location.href="/choosepaper/index.html"
+                }
+                else {
+                    alert("网络异常")
+                }
+            }
+        })
+
     }
 }
+
+$(function () {
+    $('#updateForm').bootstrapValidator({
+        message: 'This value is not valid',
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            name2: {
+                message: '名称验证失败',
+                validators: {
+                    notEmpty: {
+                        message: '名称不能为空'
+                    }
+                }
+            },
+            description2: {
+                message: '描述验证失败',
+                validators: {
+                    notEmpty: {
+                        message: '描述不能为空'
+                    }
+                }
+            },
+            demand2: {
+                message: '要求验证失败',
+                validators: {
+                    notEmpty: {
+                        message: '要求不能为空'
+                    },
+                    /* regexp: {
+                     regexp: /^1[3|5|8]{1}[0-9]{9}$/,
+                     message: '请输入正确的手机号码'
+                     }*/
+                }
+            },
+
+        },
+    });
+});
+
+$("#updateForm input").keyup(function () {
+    $("#updateForm").data('bootstrapValidator').validate();
+    if($("#updateForm").data('bootstrapValidator').isValid()) {
+        $("#updatetopic").removeAttr("disabled");
+    }
+    else{
+        $("#updatetopic").attr({"disabled":"disabled"});
+    }
+})
+$("#updateForm textarea").keyup(function () {
+    $("#updateForm").data('bootstrapValidator').validate();
+    if($("#updateForm").data('bootstrapValidator').isValid()) {
+        $("#updatetopic").removeAttr("disabled");
+    }
+    else{
+        $("#updatetopic").attr({"disabled":"disabled"});
+    }
+})
 
 function updatesub() {
     var updatePaperIn={id:$("#id2").val(),name:$("#name2").val().trim(),description:$("#description2").val().trim(),demand:$("#demand2").val()};
@@ -217,6 +364,7 @@ function updatesub() {
         contentType:"application/json",
         success:function (data) {
             alert(data.message)
+            location.reload()
         },
         error:function (data) {
             var response=data.responseText;

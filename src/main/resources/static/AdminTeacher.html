@@ -8,6 +8,8 @@
     <script type="text/javascript" src="js/bootstrap-paginator.js"></script>
     <script type="text/javascript" src="js/adminteacher.js"></script>
     <link type="text/css" rel="stylesheet" href="css/bootstrap.css">
+    <link type="text/css" rel="stylesheet" href="css/bootstrapValidator.min.css">
+    <script type="text/javascript" src="js/bootstrapValidator.min.js"></script>
 </head>
 <style type="text/css">
     table{
@@ -94,13 +96,13 @@
                 <h4 class="modal-title " id="addLabel" align="center"><strong>添加教师</strong></h4>
             </div>
             <div class="modal-body">
-                <form class="form-horizontal" role="form" >
+                <form class="form-horizontal" role="form" id="addForm">
                     <div class="form-group">
                         <label  class="col-sm-2 control-label col-sm-offset-1">
                             账号
                         </label>
                         <div class="col-sm-6">
-                            <input class="form-control" id="id"  type="text"/>
+                            <input class="form-control" id="id" name="id" type="text"/>
                         </div>
                     </div>
                     <div class="form-group">
@@ -108,7 +110,7 @@
                             密码
                         </label>
                         <div class="col-sm-6">
-                            <input class="form-control" id="password"  type="text"/>
+                            <input class="form-control" id="password" name="password" type="text"/>
                         </div>
                     </div>
                     <div class="form-group">
@@ -116,7 +118,7 @@
                             名称
                         </label>
                         <div class="col-sm-6">
-                            <input class="form-control" id="name"  type="text"/>
+                            <input class="form-control" id="name" name="name" type="text"/>
                         </div>
                     </div>
                     <div class="form-group">
@@ -136,7 +138,7 @@
                             电话
                         </label>
                         <div class="col-sm-6">
-                            <input class="form-control" id="tel"  type="text"/>
+                            <input class="form-control" id="tel" name="tel" type="text"/>
                         </div>
                     </div>
                     <div class="form-group">
@@ -152,7 +154,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-sm-offset-3 col-sm-5">
-                            <button type="button" class="btn btn-success"data-dismiss="modal" onclick="addsub()">提交</button>
+                            <button type="button" class="btn btn-success"data-dismiss="modal" id="addTeacher"onclick="addsub()">提交</button>
                             <button type="button" class="btn btn-info" data-dismiss="modal">关闭</button>
                         </div>
                     </div>
@@ -170,7 +172,7 @@
                 <h4 class="modal-title " id="updateLabel" align="center"><strong>修改基本信息</strong></h4>
             </div>
             <div class="modal-body">
-                <form class="form-horizontal" role="form" >
+                <form class="form-horizontal" role="form" id="updateForm" >
                     <div class="form-group">
                         <label  class="col-sm-2 control-label col-sm-offset-1">
                             账号
@@ -184,7 +186,7 @@
                             名称
                         </label>
                         <div class="col-sm-6">
-                            <input class="form-control" id="name2"  type="text"/>
+                            <input class="form-control" id="name2" name="name2" type="text"/>
                         </div>
                     </div>
                     <div class="form-group">
@@ -204,7 +206,7 @@
                             电话
                         </label>
                         <div class="col-sm-6">
-                            <input class="form-control" id="tel2"  type="text"/>
+                            <input class="form-control" id="tel2" name="tel2" type="text"/>
                         </div>
                     </div>
                     <div class="form-group">
@@ -220,7 +222,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-sm-offset-3 col-sm-5">
-                            <button type="button" class="btn btn-success"data-dismiss="modal" onclick="updatesub()">提交</button>
+                            <button type="button" class="btn btn-success"data-dismiss="modal"id="updateTeacher" onclick="updatesub()">提交</button>
                             <button type="button" class="btn btn-info" data-dismiss="modal">关闭</button>
                         </div>
                     </div>

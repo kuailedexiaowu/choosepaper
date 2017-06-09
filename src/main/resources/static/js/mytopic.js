@@ -82,7 +82,7 @@ function mytopiclist(no,size) {
                 bootstrapMajorVersion:3,
                 onPageClicked:function (event, originalEvent, type, page) {
                     $("tbody").children().remove();
-                    teacherpaper2(page,2)
+                    tabelupdate(page,5)
                 }
             }
             $('#paginator').bootstrapPaginator(op);
@@ -101,8 +101,64 @@ function mytopiclist(no,size) {
 }
 
 function addin() {
+    addcheck();
     $("#add").attr("data-target","#addModel").attr("data-toggle","modal");
+    $("#addtopic").attr({"disabled":"disabled"});
 }
+
+function addcheck() {
+    $('#addForm').bootstrapValidator({
+        message: 'This value is not valid',
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            title: {
+                message: '标题验证失败',
+                validators: {
+                    notEmpty: {
+                        message: '标题不能为空'
+                    }
+                }
+            },
+            context: {
+                message: '内容验证失败',
+                validators: {
+                    notEmpty: {
+                        message: '内容不能为空'
+                    }
+                }
+            }
+        },
+    });
+};
+
+$('#addModel').on('hidden.bs.modal', function() {
+    $("#addForm").data('bootstrapValidator').destroy();
+    $('#addForm').data('bootstrapValidator', null);
+    $("#addForm input").val("");
+    $("#addForm textarea").val("")
+});
+
+$("#addForm input").keyup(function () {
+    if($("#addForm").data('bootstrapValidator').isValid()) {
+        $("#addtopic").removeAttr("disabled");
+    }
+    else{
+        $("#addtopic").attr({"disabled":"disabled"});
+    }
+})
+
+$("#addForm textarea").keyup(function () {
+    if($("#addForm").data('bootstrapValidator').isValid()) {
+        $("#addtopic").removeAttr("disabled");
+    }
+    else{
+        $("#addtopic").attr({"disabled":"disabled"});
+    }
+})
 
 function addsub() {
     var topicAddInvo = {
@@ -116,7 +172,8 @@ function addsub() {
         data: JSON.stringify(topicAddInvo),
         contentType: "application/json",
         success: function (data) {
-            alert(data.message)
+            alert(data.message);
+            location.reload();
         },
         error: function (data) {
             var response=data.responseText;
@@ -308,7 +365,8 @@ function deletein(){
         data:JSON.stringify(ids),
         contentType:"application/json",
         success: function (data) {
-            alert(data.message)
+            alert(data.message);
+            location.reload();
         },
         error: function (data) {
             var response=data.responseText;

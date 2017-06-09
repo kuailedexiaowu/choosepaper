@@ -84,7 +84,7 @@ function adminstudent(no,size) {
                 bootstrapMajorVersion:3,
                 onPageClicked:function (event, originalEvent, type, page) {
                     $("tbody").children().remove();
-                    teacherpaper2(page,2)
+                    adminstudent2(page,5)
                 }
             }
             $('#paginator').bootstrapPaginator(op);
@@ -117,7 +117,7 @@ function adminstudent2(no,size) {
                 bootstrapMajorVersion:3,
                 onPageClicked:function (event, originalEvent, type, page) {
                     $("tbody").children().remove();
-                    teacherpaper2(page,2)
+                    teacherpaper2(page,5)
                 }
             }
             $('#paginator').bootstrapPaginator(op);
@@ -135,10 +135,91 @@ function adminstudent2(no,size) {
     });
 }
 
-function addin() {
-    $("#add").attr("data-target","#addModel").attr("data-toggle","modal");
-}
+function addcheck() {
+    $('#addForm').bootstrapValidator({
+        message: 'This value is not valid',
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            id: {
+                message: '用户账号验证失败',
+                validators: {
+                    notEmpty: {
+                        message: '用户账号不能为空'
+                    }
+                }
+            },
+            password: {
+                message: '密码验证失败',
+                validators: {
+                    notEmpty: {
+                        message: '密码不能为空'
+                    },
+                    identical: {//相同
+                        field: 'id', //需要进行比较的id值
+                        message: '两次密码不一致'
+                    }
+                }
+            },
+            name: {
+                message: '名称验证失败',
+                validators: {
+                    notEmpty: {
+                        message: '名称不能为空'
+                    }
+                }
+            },
+            major: {
+                message: '专业验证失败',
+                validators: {
+                    notEmpty: {
+                        message: '专业不能为空'
+                    }
+                }
+            },
+            tel: {
+                message: '电话验证失败',
+                validators: {
+                    notEmpty: {
+                        message: '电话不能为空'
+                    },
+                    stringLength: {
+                        min: 11,
+                        max: 11,
+                        message: '请输入11位手机号码'
+                    },
+                   /* regexp: {
+                        regexp: /^1[3|5|8]{1}[0-9]{9}$/,
+                        message: '请输入正确的手机号码'
+                    }*/
+                }
+            },
 
+        },
+    });
+};
+
+$('#addModel').on('hidden.bs.modal', function() {
+    $("#addForm").data('bootstrapValidator').destroy();
+    $('#addForm').data('bootstrapValidator', null);
+    $("#addForm input").val("")
+});
+function addin() {
+    addcheck();
+    $("#add").attr("data-target","#addModel").attr("data-toggle","modal");
+    $("#addstudent").attr({"disabled":"disabled"});
+}
+$("#addForm input").keyup(function () {
+    if($("#addForm").data('bootstrapValidator').isValid()) {
+        $("#addstudent").removeAttr("disabled");
+    }
+    else{
+        $("#addstudent").attr({"disabled":"disabled"});
+    }
+})
 function addsub() {
     var addStudentIn = {
         id : $("#id").val().trim(),
@@ -156,6 +237,7 @@ function addsub() {
         contentType: "application/json",
         success: function (data) {
             alert(data.message)
+            location.reload();
         },
         error: function (data) {
             var response=data.responseText;
@@ -207,6 +289,61 @@ function update() {
     }
 }
 
+$(function () {
+    $('#updateForm').bootstrapValidator({
+        message: 'This value is not valid',
+        feedbackIcons: {
+            valid: 'glyphicon glyphicon-ok',
+            invalid: 'glyphicon glyphicon-remove',
+            validating: 'glyphicon glyphicon-refresh'
+        },
+        fields: {
+            name2: {
+                message: '名称验证失败',
+                validators: {
+                    notEmpty: {
+                        message: '名称不能为空'
+                    }
+                }
+            },
+            major2: {
+                message: '专业验证失败',
+                validators: {
+                    notEmpty: {
+                        message: '专业不能为空'
+                    }
+                }
+            },
+            tel2: {
+                message: '电话验证失败',
+                validators: {
+                    notEmpty: {
+                        message: '电话不能为空'
+                    },
+                    stringLength: {
+                        min: 11,
+                        max: 11,
+                        message: '请输入11位手机号码'
+                    },
+                    /* regexp: {
+                     regexp: /^1[3|5|8]{1}[0-9]{9}$/,
+                     message: '请输入正确的手机号码'
+                     }*/
+                }
+            },
+
+        },
+    });
+});
+$("#updateForm input").keyup(function () {
+    $("#updateForm").data('bootstrapValidator').validate();
+    if($("#updateForm").data('bootstrapValidator').isValid()) {
+        $("#updateStudent").removeAttr("disabled");
+    }
+    else{
+        $("#updateStudent").attr({"disabled":"disabled"});
+    }
+})
 function updatesub() {
     var updateTeacherIn={id:$("#id2").val(),name:$("#name2").val().trim(),major:$("#major2").val().trim(),
         tel:$("#tel2").val(),gender:gendertoint($("#gender2").val().trim())};
@@ -218,6 +355,7 @@ function updatesub() {
         contentType:"application/json",
         success:function (data) {
             alert(data.message)
+            location.reload();
         },
         error:function (data) {
             var response=data.responseText;
@@ -260,6 +398,7 @@ function deletein(){
         contentType:"application/json",
         success: function (data) {
             alert(data.message)
+            location.reload();
         },
         error: function (data) {
             var response=data.responseText;
